@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J-League</title>
+
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--CSS-->
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>RANKINGS</h1>
+    </header>
+    <main>
+        <!-- Nav tabs -->
+        <ul class="rankingsTabs nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" href="#lTable" role="tab" data-toggle="tab">League Table</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#topScorer" role="tab" data-toggle="tab">Top Scorer</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#bestGK" role="tab" data-toggle="tab">Best Goalkeeper</a>
+            </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="mainContent tab-pane fade in active show" id="lTable">
+                <table class="rankingTable">
+                    <thead>
+                        <tr>
+                            <th colspan="3"></th>
+                            <th>MP</th>
+                            <th>W</th>
+                            <th>D</th>
+                            <th>L</th>
+                            <th>GF</th>
+                            <th>GA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tdPosition">12</td>
+                            <td class="tdTeamName">Panteras Negras</td>
+                            <td class="tdPoints">
+                                <p>13</p>
+                            </td>
+                            <td>34</td>
+                            <td>23</td>
+                            <td>23</td>
+                            <td>23</td>
+                            <td>12</td>
+                            <td>12</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div role="tabpanel" class="mainContent tab-pane fade" id="topScorer">
+                <table class="rankingTops">
+                    <thead>
+                        <tr>
+                            <th>Position</th>
+                            <th>Player</th>
+                            <th>Team</th>
+                            <th>Goals</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tdPosition">12</td>
+                            <td class="tdNameScorer">Paquito</td>
+                            <td class="tdTeamName">Panteras Negras</td>
+                            <td class="tdGoals">
+                                <p>0</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div role="tabpanel" class="mainContent tab-pane fade" id="bestGK">
+                <table class="rankingTops">
+                    <thead>
+                        <tr>
+                            <th>Position</th>
+                            <th>Player</th>
+                            <th>Team</th>
+                            <th>Goals</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tdPosition">12</td>
+                            <td class="tdNameScorer">Paquito</td>
+                            <td class="tdTeamName">Panteras Negras</td>
+                            <td class="tdGoals">
+                                <p>13</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <nav class="navFooter">
+            <a href="page-list-teams.html">Teams</a>
+            <a href="index.html">Matchday</a>
+            <a class="aActive" href="#">Rankings</a>
+            <a href="#" disabled>Chat</a>
+        </nav>
+    </footer>
+
+
+    <!--SCRIPTS-->
+    <!--Vue-->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!--JS-->
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>
