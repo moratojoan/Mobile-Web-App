@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>J-League</title>
 
+    <!--Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <!--Google Font-->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <!--Font Awesome-->
@@ -18,21 +20,37 @@
 
 <body>
     <header>
-        <h1>TEAMS</h1>
+        <a href="page-list-teams.html" class="backDiv">
+            <i class="fas fa-arrow-left"></i>
+            <p>Back</p>
+        </a>
+        <h1>PANTERAS NEGRAS</h1>
     </header>
-    <main class="mainContent">
-        <a href="teamInfo.html" class="boxTeam-list">
-            <img class="teamLogo-list" src="images/icons/asterix-y-obelix.png" alt="blackPantersLogo">
-            <p>Panteras Negras</p>
-        </a>
-        <a href="#" class="boxTeam-list">
-            <img class="teamLogo-list" src="images/icons/el-rey-leon.png" alt="vikingsLogo">
-            <p>Vikings</p>
-        </a>
+    <main class="mainContent teamInfoLandscape">
+        <div>
+            <div class="boxTeam-big">
+                <img class="teamLogo-big" src="images/icons/asterix-y-obelix.png" alt="blackPantersLogo">
+                <div>
+                    <p>Pos: 3</p>
+                    <div>
+                        <p>Last Results:</p>
+                        <p><span>L</span> - <span>D</span> - <span>W</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="secondContent">
+            <div><a href="teamMatchdays.html">Team Matchdays</a> <a href="teamMembers.html">Team Members</a></div>
+        </div>
+        <div class="secondContent">
+            <h3>Diamond Stadium</h3>
+            <p>24 W. Walton St., Chicago, IL 60610</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.6540278726106!2d-87.63123838482697!3d41.900297072004335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd34e07f6bac3%3A0x68a82e5d59952c86!2s24+W+Walton+St%2C+Chicago%2C+IL+60610%2C+EE.+UU.!5e0!3m2!1ses!2ses!4v1538124811637" allowfullscreen></iframe>
+        </div>
     </main>
     <footer>
         <nav class="navFooter">
-            <a class="aActive" href="#"><span>Teams</span><span><i class="fas fa-shield-alt"></i></span></a>
+            <a href="page-list-teams.html"><span>Teams</span><span><i class="fas fa-shield-alt"></i></span></a>
             <a href="index2.html"><span>Matchday</span><span><i class="fas fa-calendar-alt"></i></span></a>
             <a href="rankings.html"><span>Rankings</span><span><i class="fas fa-trophy"></i></span></a>
             <a href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>

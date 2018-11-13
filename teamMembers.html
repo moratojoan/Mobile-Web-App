@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>J-League</title>
 
+    <!--Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <!--Google Font-->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <!--Font Awesome-->
@@ -18,21 +20,26 @@
 
 <body>
     <header>
-        <h1>TEAMS</h1>
+        <a href="teamInfo.html" class="backDiv">
+            <i class="fas fa-arrow-left"></i>
+            <p>Back</p>
+        </a>
+        <h1>TEAM MEMBERS</h1>
     </header>
-    <main class="mainContent">
-        <a href="teamInfo.html" class="boxTeam-list">
-            <img class="teamLogo-list" src="images/icons/asterix-y-obelix.png" alt="blackPantersLogo">
-            <p>Panteras Negras</p>
-        </a>
-        <a href="#" class="boxTeam-list">
-            <img class="teamLogo-list" src="images/icons/el-rey-leon.png" alt="vikingsLogo">
-            <p>Vikings</p>
-        </a>
+    <main class="mainContent secondContent">
+        <h2>Staff</h2>
+        <ul>
+            <li>Coach: <span>Nombre</span></li>
+        </ul>
+        <h2>Players</h2>
+        <ul>
+            <li><span>1-</span> <span>Name</span></li>
+            <li><span>2-</span> <span>Name</span></li>
+        </ul>
     </main>
     <footer>
         <nav class="navFooter">
-            <a class="aActive" href="#"><span>Teams</span><span><i class="fas fa-shield-alt"></i></span></a>
+            <a href="page-list-teams.html"><span>Teams</span><span><i class="fas fa-shield-alt"></i></span></a>
             <a href="index2.html"><span>Matchday</span><span><i class="fas fa-calendar-alt"></i></span></a>
             <a href="rankings.html"><span>Rankings</span><span><i class="fas fa-trophy"></i></span></a>
             <a href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>

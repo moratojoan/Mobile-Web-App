@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J-League</title>
+
+    <!--Logo-->
+    <link rel="shortcut icon" sizes="128x128" href="images/logo.png">
+    <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/logo.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/logo.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/logo.png">
+    <!--All screen content-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--CSS-->
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>MATCHDAY</h1>
+    </header>
+    <main>
+        <select name="matchdays">
+            <option value="matchday1">Matchday 1</option>
+            <option value="matchday2">Matchday 2</option>
+        </select>
+        <div class="mainContent">
+            <div class="boxMatchBoxes">
+                <h2>08/11/2018</h2>
+                <a href="matchInfo.html" class="boxMatch-small">
+                    <div class="boxTeam-small">
+                        <p>Panteras Negras de Okalnd</p>
+                        <img class="teamLogo-small" src="images/icons/asterix-y-obelix.png" alt="blackPantersLogo">
+                    </div>
+                    <p>2-0</p>
+                    <div class="boxTeam-small">
+                        <img class="teamLogo-small" src="images/icons/el-rey-leon.png" alt="vikingsLogo">
+                        <p>Vikings</p>
+                    </div>
+                </a>
+                <a href="#" class="boxMatch-small">
+                    <div class="boxTeam-small">
+                        <p>Pirates Raiders</p>
+                        <img class="teamLogo-small" src="images/icons/boladedrac.png" alt="blackPantersLogo">
+                    </div>
+                    <p>0-3</p>
+                    <div class="boxTeam-small">
+                        <img class="teamLogo-small" src="images/icons/hogwarts-crest-png.png" alt="vikingsLogo">
+                        <p>Warrior Dolphins</p>
+                    </div>
+                </a>
+            </div>
+            <div class="boxMatchBoxes">
+                <h2>09/11/2018</h2>
+                <a href="#" class="boxMatch-small">
+
+                    <div class="boxTeam-small">
+                        <p>Pirates Raiders</p>
+                        <img class="teamLogo-small" src="images/icons/simpsons_PNG2.png" alt="blackPantersLogo">
+                    </div>
+                    <p>18:00</p>
+                    <div class="boxTeam-small">
+                        <img class="teamLogo-small" src="images/icons/mario.png" alt="vikingsLogo">
+                        <p>Warrior Dolphins</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <nav class="navFooter">
+            <a href="page-list-teams.html"><span>Teams</span><span><i class="fas fa-shield-alt"></i></span></a>
+            <a class="aActive" href="#"><span>Matchday</span><span><i class="fas fa-calendar-alt"></i></span></a>
+            <a href="rankings.html"><span>Rankings</span><span><i class="fas fa-trophy"></i></span></a>
+            <a href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>
+        </nav>
+    </footer>
+
+
+    <!--SCRIPTS-->
+    <!--Vue-->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!--JS-->
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>
