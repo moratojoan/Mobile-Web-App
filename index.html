@@ -30,7 +30,7 @@
 <body>
     <div id="app">
         <!--START: INDEX2-->
-        <div id="index2" class="page" v-show="pageToShow=='index2'">
+        <div id="index2" v-show="pageToShow=='index2'">
             <header>
                 <h1>MATCHDAY</h1>
             </header>
@@ -45,22 +45,22 @@
                         <a v-on:click="showHidePages('matchInfo')" href="#" class="boxMatch-small">
                             <div class="boxTeam-small">
                                 <p>Panteras Negras de Okalnd</p>
-                                <img class="teamLogo-small" src="images/icons/asterix-y-obelix.png" alt="blackPantersLogo">
+                                <img class="teamLogo-small" src="https://preview.ibb.co/jOU5S0/asterix-y-obelix.png" alt="blackPantersLogo">
                             </div>
                             <p>2-0</p>
                             <div class="boxTeam-small">
-                                <img class="teamLogo-small" src="images/icons/el-rey-leon.png" alt="vikingsLogo">
+                                <img class="teamLogo-small" src="https://image.ibb.co/cp0ZLL/el-rey-leon.png" alt="vikingsLogo">
                                 <p>Vikings</p>
                             </div>
                         </a>
                         <a href="#" class="boxMatch-small">
                             <div class="boxTeam-small">
                                 <p>Pirates Raiders</p>
-                                <img class="teamLogo-small" src="images/icons/boladedrac.png" alt="blackPantersLogo">
+                                <img class="teamLogo-small" src="https://image.ibb.co/e6MKn0/bola-de-drac.png" alt="blackPantersLogo">
                             </div>
                             <p>0-3</p>
                             <div class="boxTeam-small">
-                                <img class="teamLogo-small" src="images/icons/hogwarts-crest-png.png" alt="vikingsLogo">
+                                <img class="teamLogo-small" src="https://preview.ibb.co/fDiofL/hogwarts.png" alt="vikingsLogo">
                                 <p>Warrior Dolphins</p>
                             </div>
                         </a>
@@ -71,11 +71,11 @@
 
                             <div class="boxTeam-small">
                                 <p>Pirates Raiders</p>
-                                <img class="teamLogo-small" src="images/icons/simpsons_PNG2.png" alt="blackPantersLogo">
+                                <img class="teamLogo-small" src="https://preview.ibb.co/eLKGZf/the-simpsons.png" alt="blackPantersLogo">
                             </div>
                             <p>18:00</p>
                             <div class="boxTeam-small">
-                                <img class="teamLogo-small" src="images/icons/mario.png" alt="vikingsLogo">
+                                <img class="teamLogo-small" src="https://preview.ibb.co/bLTbZf/mario-bros.png" alt="vikingsLogo">
                                 <p>Warrior Dolphins</p>
                             </div>
                         </a>
@@ -94,7 +94,7 @@
         <!--END: INDEX2-->
 
         <!--START: MATCH INFO-->
-        <div id="matchInfo" class="page" v-show="pageToShow=='matchInfo'">
+        <div id="matchInfo" v-show="pageToShow=='matchInfo'">
             <header>
                 <a v-on:click="showHidePages('index2')" href="#" class="backDiv">
                     <i class="fas fa-arrow-left"></i>
@@ -108,12 +108,12 @@
                         <h2>03/11/2018 - 17:00</h2>
                         <div>
                             <div class="boxTeam-medium">
-                                <img class="teamLogo-medium" src="images/icons/asterix-y-obelix.png" alt="blackPantersLogo">
+                                <img class="teamLogo-medium" src="https://preview.ibb.co/jOU5S0/asterix-y-obelix.png" alt="blackPantersLogo">
                                 <p>Panteras Negras</p>
                             </div>
                             <p>2-0</p>
                             <div class="boxTeam-medium">
-                                <img class="teamLogo-medium" src="images/icons/el-rey-leon.png" alt="vikingsLogo">
+                                <img class="teamLogo-medium" src="https://image.ibb.co/cp0ZLL/el-rey-leon.png" alt="vikingsLogo">
                                 <p>Vikings</p>
                             </div>
                         </div>
@@ -145,7 +145,7 @@
         <!--END: MATCH INFO-->
 
         <!--START: MATCH HISTORY-->
-        <div id="matchHistory" class="page" v-show="pageToShow=='matchHistory'">
+        <div id="matchHistory" v-show="pageToShow=='matchHistory'">
             <header>
                 <a v-on:click="showHidePages('matchInfo')" href="#" class="backDiv">
                     <i class="fas fa-arrow-left"></i>
@@ -173,17 +173,17 @@
         <!--END: MATCH HISTORY-->
 
         <!--START: PAGE LIST TEAMS-->
-        <div id="page-list-teams" class="page" v-show="pageToShow=='page-list-teams'">
+        <div id="page-list-teams" v-show="pageToShow=='page-list-teams'">
             <header>
                 <h1>TEAMS</h1>
             </header>
             <main class="mainContent">
                 <a v-on:click="showHidePages('teamInfo')" href="#" class="boxTeam-list">
-                    <img class="teamLogo-list" src="images/icons/asterix-y-obelix.png" alt="blackPantersLogo">
+                    <img class="teamLogo-list" src="https://preview.ibb.co/jOU5S0/asterix-y-obelix.png" alt="blackPantersLogo">
                     <p>Panteras Negras</p>
                 </a>
                 <a href="#" class="boxTeam-list">
-                    <img class="teamLogo-list" src="images/icons/el-rey-leon.png" alt="vikingsLogo">
+                    <img class="teamLogo-list" src="https://image.ibb.co/cp0ZLL/el-rey-leon.png" alt="vikingsLogo">
                     <p>Vikings</p>
                 </a>
             </main>
@@ -199,7 +199,7 @@
         <!--END: PAGE LIST TEAMS-->
 
         <!--START: TEAM INFO-->
-        <div id="teamInfo" class="page" v-show="pageToShow=='teamInfo'">
+        <div id="teamInfo" v-show="pageToShow=='teamInfo'">
             <header>
                 <a v-on:click="showHidePages('page-list-teams')" href="#" class="backDiv">
                     <i class="fas fa-arrow-left"></i>
@@ -210,7 +210,7 @@
             <main class="mainContent teamInfoLandscape">
                 <div>
                     <div class="boxTeam-big">
-                        <img class="teamLogo-big" src="images/icons/asterix-y-obelix.png" alt="blackPantersLogo">
+                        <img class="teamLogo-big" src="https://preview.ibb.co/jOU5S0/asterix-y-obelix.png" alt="blackPantersLogo">
                         <div>
                             <p>Pos: 3</p>
                             <div>
@@ -241,7 +241,7 @@
         <!--END: TEAM INFO-->
 
         <!--START: TEAM MATCHDAYS-->
-        <div id="teamMatchdays" class="page" v-show="pageToShow=='teamMatchdays'">
+        <div id="teamMatchdays" v-show="pageToShow=='teamMatchdays'">
             <header>
                 <a v-on:click="showHidePages('teamInfo')" href="#" class="backDiv">
                     <i class="fas fa-arrow-left"></i>
@@ -279,7 +279,7 @@
         <!--END: TEAM MATCHDAYS-->
 
         <!--START: TEAM MEMBERS-->
-        <div id="teamMembers" class="page" v-show="pageToShow=='teamMembers'">
+        <div id="teamMembers" v-show="pageToShow=='teamMembers'">
             <header>
                 <a v-on:click="showHidePages('teamInfo')" href="#" class="backDiv">
                     <i class="fas fa-arrow-left"></i>
@@ -291,11 +291,13 @@
                 <h2>Staff</h2>
                 <ul>
                     <li>Coach: <span>Nombre</span></li>
+                    <li>Second Coach: <span>Nombre</span></li>
+                    <li>Goalkeeper Coach: <span>Nombre</span></li>
                 </ul>
                 <h2>Players</h2>
                 <ul>
-                    <li><span>1-</span> <span>Name</span></li>
-                    <li><span>2-</span> <span>Name</span></li>
+                    <li><span>1</span>- <span>Name</span></li>
+                    <li><span>2</span>- <span>Name</span></li>
                 </ul>
             </main>
             <footer>
@@ -310,7 +312,7 @@
         <!--END: TEAM MEMBERS-->
 
         <!--START: RANKINGS-->
-        <div id="rankings" class="page" v-show="pageToShow=='rankings'">
+        <div id="rankings" v-show="pageToShow=='rankings'">
             <header>
                 <h1>RANKINGS</h1>
             </header>
