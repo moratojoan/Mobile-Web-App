@@ -36,21 +36,21 @@
             </header>
             <main>
                 <select name="matchdays" v-model="matchdaySelected">
-                    <option v-for="(matchday, index) in matchdays" v-bind:value="'matchday ' + (index+1)">{{matchday.matchday}}</option>
+                    <option v-for="(matchday, index) in matchdays" v-bind:value="'Matchday ' + (index+1)">{{matchday.matchday}}</option>
                 </select>
                 <div class="mainContent">
-                    <div v-for="match in selectMatchday" class="boxMatchBoxes">
-                        <h2>{{match[0].schedule.date}}</h2>
-                        <a v-on:click="showHidePages('matchInfo')" href="#" class="boxMatch-small">
+                    <div v-for="date in selectMatchday" class="boxMatchBoxes">
+                        <h2>{{date.date}}</h2>
+                        <a v-for="match in date.matchesList" v-on:click="showHidePages('matchInfo', match)" href="#" class="boxMatch-small">
                             <div class="boxTeam-small">
-                                <p>{{match[1].name}}</p>
-                                <img class="teamLogo-small" v-bind:src="match[1].logo.url" v-bind:alt="match[1].logo.alt">
+                                <p>{{match.localTeam.name}}</p>
+                                <img class="teamLogo-small" v-bind:src="match.localTeam.logo.url" v-bind:alt="match.localTeam.logo.alt">
                             </div>
-                            <p v-if="match[0].result">{{match[0].result}}</p>
-                            <p v-if="match[0].result == null">{{match[0].schedule.time}}</p>
+                            <p v-if="match.result">{{match.result}}</p>
+                            <p v-if="match.result == null">{{match.schedule.time}}</p>
                             <div class="boxTeam-small">
-                                <img class="teamLogo-small" v-bind:src="match[2].logo.url" v-bind:alt="match[2].logo.alt">
-                                <p>{{match[2].name}}</p>
+                                <img class="teamLogo-small" v-bind:src="match.visitingTeam.logo.url" v-bind:alt="match.visitingTeam.logo.alt">
+                                <p>{{match.visitingTeam.name}}</p>
                             </div>
                         </a>
                     </div>
@@ -61,7 +61,7 @@
                     <a v-on:click="showHidePages('page-list-teams')" href="#"><span>Teams</span><span><i class="fas fa-shield-alt"></i></span></a>
                     <a class="aActive" href="#"><span>Matchday</span><span><i class="fas fa-calendar-alt"></i></span></a>
                     <a v-on:click="showHidePages('rankings')" href="#"><span>Rankings</span><span><i class="fas fa-trophy"></i></span></a>
-                    <a href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>
+                    <a v-on:click="showHidePages('chat')" href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>
                 </nav>
             </footer>
         </div>
@@ -79,32 +79,32 @@
             <main class="mainContent matchInfoLandscape">
                 <div>
                     <div class="boxMatch-medium">
-                        <h2>03/11/2018 - 17:00</h2>
+                        <h2>{{matchToShow.schedule.date}} - {{matchToShow.schedule.time}}</h2>
                         <div>
                             <div class="boxTeam-medium">
-                                <img class="teamLogo-medium" src="https://preview.ibb.co/jOU5S0/asterix-y-obelix.png" alt="blackPantersLogo">
-                                <p>Panteras Negras</p>
+                                <img class="teamLogo-medium" v-bind:src="matchToShow.localTeam.logo.url" v-bind:alt="matchToShow.localTeam.logo.alt">
+                                <p>{{matchToShow.localTeam.name}}</p>
                             </div>
-                            <p>2-0</p>
+                            <p v-if="matchToShow.result">{{matchToShow.result}}</p>
+                            <p v-else>:-:</p>
                             <div class="boxTeam-medium">
-                                <img class="teamLogo-medium" src="https://image.ibb.co/cp0ZLL/el-rey-leon.png" alt="vikingsLogo">
-                                <p>Vikings</p>
+                                <img class="teamLogo-medium" v-bind:src="matchToShow.visitingTeam.logo.url" v-bind:alt="matchToShow.visitingTeam.logo.alt">
+                                <p>{{matchToShow.visitingTeam.name}}</p>
                             </div>
                         </div>
                     </div>
                     <div class="secondContent">
                         <h2>Goals</h2>
                         <ul class="matchHistoryList">
-                            <li><span>60'' Manu</span> <span>2-0</span></li>
-                            <li><span>15'' Paquito</span> <span>1-0</span></li>
+                            <li v-for="goal in goalsSorted"><span>{{goal.min}}'' {{goal.player}}</span> <span>{{goal.parcialResult}}</span></li>
                         </ul>
                         <div><a v-on:click="showHidePages('matchHistory')" href="#">Match History</a></div>
                     </div>
                 </div>
                 <div class="secondContent">
-                    <h3>Diamond Stadium</h3>
-                    <p>24 W. Walton St., Chicago, IL 60610</p>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.6540278726106!2d-87.63123838482697!3d41.900297072004335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd34e07f6bac3%3A0x68a82e5d59952c86!2s24+W+Walton+St%2C+Chicago%2C+IL+60610%2C+EE.+UU.!5e0!3m2!1ses!2ses!4v1538124811637" allowfullscreen></iframe>
+                    <h3>{{matchToShow.localTeam.stadium.name}}</h3>
+                    <p>{{matchToShow.localTeam.stadium.direction}}</p>
+                    <iframe v-bind:src="matchToShow.localTeam.stadium.src" allowfullscreen></iframe>
                 </div>
             </main>
             <footer>
@@ -112,7 +112,7 @@
                     <a v-on:click="showHidePages('page-list-teams')" href="#"><span>Teams</span><span><i class="fas fa-shield-alt"></i></span></a>
                     <a v-on:click="showHidePages('index2')" href="#"><span>Matchday</span><span><i class="fas fa-calendar-alt"></i></span></a>
                     <a v-on:click="showHidePages('rankings')" href="#"><span>Rankings</span><span><i class="fas fa-trophy"></i></span></a>
-                    <a href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>
+                    <a v-on:click="showHidePages('chat')" href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>
                 </nav>
             </footer>
         </div>
@@ -129,9 +129,8 @@
             </header>
             <main class="mainContent">
                 <ul class="matchHistoryList completeMatchHistoryList">
-                    <li><span>The match ends</span> <span>2-0</span></li>
-                    <li><span>60'' Manu</span> <span>2-0</span></li>
-                    <li><span>15'' Paquito</span> <span>1-0</span></li>
+                    <li><span>The match ends</span> <span>{{matchToShow.result}}</span></li>
+                    <li v-for="goal in goalsSorted"><span>{{goal.min}}'' {{goal.player}}</span> <span>{{goal.parcialResult}}</span></li>
                     <li><span>The match begins</span> <span>0-0</span></li>
                 </ul>
             </main>
@@ -140,7 +139,7 @@
                     <a v-on:click="showHidePages('page-list-teams')" href="#"><span>Teams</span><span><i class="fas fa-shield-alt"></i></span></a>
                     <a v-on:click="showHidePages('index2')" href="#"><span>Matchday</span><span><i class="fas fa-calendar-alt"></i></span></a>
                     <a v-on:click="showHidePages('rankings')" href="#"><span>Rankings</span><span><i class="fas fa-trophy"></i></span></a>
-                    <a href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>
+                    <a v-on:click="showHidePages('chat')" href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>
                 </nav>
             </footer>
         </div>
@@ -162,7 +161,7 @@
                     <a class="aActive" href="#"><span>Teams</span><span><i class="fas fa-shield-alt"></i></span></a>
                     <a v-on:click="showHidePages('index2')" href="#"><span>Matchday</span><span><i class="fas fa-calendar-alt"></i></span></a>
                     <a v-on:click="showHidePages('rankings')" href="#"><span>Rankings</span><span><i class="fas fa-trophy"></i></span></a>
-                    <a href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>
+                    <a v-on:click="showHidePages('chat')" href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>
                 </nav>
             </footer>
         </div>
@@ -182,7 +181,7 @@
                     <div class="boxTeam-big">
                         <img class="teamLogo-big" v-bind:src="teamToShow.logo.url" v-bind:alt="teamToShow.logo.alt">
                         <div>
-                            <p>Pos: {{teamToShow.position}}</p>
+                            <p>Pos: 33</p>
                             <div>
                                 <p>Last Results:</p>
                                 <p><span>L</span> - <span>D</span> - <span>W</span></p>
@@ -204,7 +203,7 @@
                     <a v-on:click="showHidePages('page-list-teams')" href="#"><span>Teams</span><span><i class="fas fa-shield-alt"></i></span></a>
                     <a v-on:click="showHidePages('index2')" href="#"><span>Matchday</span><span><i class="fas fa-calendar-alt"></i></span></a>
                     <a v-on:click="showHidePages('rankings')" href="#"><span>Rankings</span><span><i class="fas fa-trophy"></i></span></a>
-                    <a href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>
+                    <a v-on:click="showHidePages('chat')" href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>
                 </nav>
             </footer>
         </div>
@@ -221,19 +220,13 @@
             </header>
             <main class="mainContent">
                 <ul class="teamMatchDateList">
-                    <li>
+                    <li v-for="match in teamToShow.schedule">
                         <div>
-                            <p>Panteras Negras</p>
-                            <p>Warriors</p>
+                            <p>{{match.localTeam}}</p>
+                            <p>{{match.visitingTeam}}</p>
                         </div>
-                        <span>fecha1</span>
-                    </li>
-                    <li>
-                        <div>
-                            <p>Dolphins</p>
-                            <p>Panteras Negras</p>
-                        </div>
-                        <span>fecha2</span>
+                        <span v-if="match.result">{{match.result}}</span>
+                        <span v-else>{{match.schedule.date}} - {{match.schedule.time}}</span>
                     </li>
                 </ul>
             </main>
@@ -242,7 +235,7 @@
                     <a v-on:click="showHidePages('page-list-teams')" href="#"><span>Teams</span><span><i class="fas fa-shield-alt"></i></span></a>
                     <a v-on:click="showHidePages('index2')" href="#"><span>Matchday</span><span><i class="fas fa-calendar-alt"></i></span></a>
                     <a v-on:click="showHidePages('rankings')" href="#"><span>Rankings</span><span><i class="fas fa-trophy"></i></span></a>
-                    <a href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>
+                    <a v-on:click="showHidePages('chat')" href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>
                 </nav>
             </footer>
         </div>
@@ -275,7 +268,7 @@
                     <a v-on:click="showHidePages('page-list-teams')" href="#"><span>Teams</span><span><i class="fas fa-shield-alt"></i></span></a>
                     <a v-on:click="showHidePages('index2')" href="#"><span>Matchday</span><span><i class="fas fa-calendar-alt"></i></span></a>
                     <a v-on:click="showHidePages('rankings')" href="#"><span>Rankings</span><span><i class="fas fa-trophy"></i></span></a>
-                    <a href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>
+                    <a v-on:click="showHidePages('chat')" href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>
                 </nav>
             </footer>
         </div>
@@ -315,18 +308,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="tdPosition">12</td>
-                                    <td class="tdTeamName">Panteras Negras</td>
+                                <tr v-for="(team, index) in teams">
+                                    <td class="tdPosition">{{index+1}}</td>
+                                    <td class="tdTeamName">{{team.name}}</td>
                                     <td class="tdPoints">
-                                        <p>13</p>
+                                        <p>{{team.rankingTableInfo.points}}</p>
                                     </td>
-                                    <td>34</td>
-                                    <td>23</td>
-                                    <td>23</td>
-                                    <td>23</td>
-                                    <td>12</td>
-                                    <td>12</td>
+                                    <td>{{team.rankingTableInfo.matchesPlayed}}</td>
+                                    <td>{{team.rankingTableInfo.wins}}</td>
+                                    <td>{{team.rankingTableInfo.draws}}</td>
+                                    <td>{{team.rankingTableInfo.losses}}</td>
+                                    <td>{{team.rankingTableInfo.goalsInFavour}}</td>
+                                    <td>{{team.rankingTableInfo.goalsAgainst}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -342,12 +335,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="tdPosition">12</td>
-                                    <td class="tdNameScorer">Paquito</td>
-                                    <td class="tdTeamName">Panteras Negras</td>
+                                <tr v-for="(player,index) in topScorer">
+                                    <td class="tdPosition">{{index+1}}</td>
+                                    <td class="tdNameScorer">{{player.name}}</td>
+                                    <td class="tdTeamName">{{player.team}}</td>
                                     <td class="tdGoals">
-                                        <p>0</p>
+                                        <p>{{player.goals}}</p>
                                     </td>
                                 </tr>
                             </tbody>
@@ -364,12 +357,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="tdPosition">12</td>
-                                    <td class="tdNameScorer">Paquito</td>
-                                    <td class="tdTeamName">Panteras Negras</td>
+                                <tr v-for="(goalkeeper,index) in bestGoalkeeper">
+                                    <td class="tdPosition">{{index+1}}</td>
+                                    <td class="tdNameScorer">{{goalkeeper.playerName}}</td>
+                                    <td class="tdTeamName">{{goalkeeper.teamName}}</td>
                                     <td class="tdGoals">
-                                        <p>13</p>
+                                        <p>{{goalkeeper.goalsAgainst}}</p>
                                     </td>
                                 </tr>
                             </tbody>
@@ -382,11 +375,48 @@
                     <a v-on:click="showHidePages('page-list-teams')" href="#"><span>Teams</span><span><i class="fas fa-shield-alt"></i></span></a>
                     <a v-on:click="showHidePages('index2')" href="#"><span>Matchday</span><span><i class="fas fa-calendar-alt"></i></span></a>
                     <a class="aActive" href="#"><span>Rankings</span><span><i class="fas fa-trophy"></i></span></a>
-                    <a href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>
+                    <a v-on:click="showHidePages('chat')" href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>
                 </nav>
             </footer>
         </div>
         <!--END: RANKINGS-->
+
+        <!--START: CHAT-->
+        <div v-show="pageToShow=='chat'">
+            <header>
+                <h1>CHAT</h1>
+            </header>
+            <main>
+                <select name="teams" v-model="chatTeamSelected">
+                    <option value="select">Select a chat...</option>
+                    <option v-for="(team, index) in teams" v-bind:value="team.name">{{team.name}}</option>
+                </select>
+                <div class="mainContent">
+                    <div class="chat">
+                        <div id="posts" class="box">
+                            Loading posts...
+                        </div>
+
+                        <div class="inputs">
+                            <input id="textInput" class="input" type="text" placeholder="Your message...">
+
+                            <button id="login" class="button is-info" v-on:click="login">Login!</button>
+                            <button id="create-post" class="button is-primary" v-on:click="writeNewPost">Send</button>
+                            <button id="logout" class="button is-info" v-on:click="logout">Logout!</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer>
+                <nav class="navFooter">
+                    <a v-on:click="showHidePages('page-list-teams')" href="#"><span>Teams</span><span><i class="fas fa-shield-alt"></i></span></a>
+                    <a v-on:click="showHidePages('index2')" href="#"><span>Matchday</span><span><i class="fas fa-calendar-alt"></i></span></a>
+                    <a v-on:click="showHidePages('rankings')" href="#"><span>Rankings</span><span><i class="fas fa-trophy"></i></span></a>
+                    <a class="aActive" href="#"><span>Chat</span><span><i class="fas fa-comments"></i></span></a>
+                </nav>
+            </footer>
+        </div>
+        <!--END: CHAT-->
 
     </div>
     <!--END OF THE MAIN DIV (VUE)-->
@@ -398,6 +428,20 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!--Firebase Chat-->
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDkU-87_6hmOrjYX__YHVPfmV2K_uldLRk",
+            authDomain: "j-football-league.firebaseapp.com",
+            databaseURL: "https://j-football-league.firebaseio.com",
+            projectId: "j-football-league",
+            storageBucket: "j-football-league.appspot.com",
+            messagingSenderId: "742467734678"
+        };
+        firebase.initializeApp(config);
+    </script>
     <!--JS-->
     <script src="scripts/main.js"></script>
 </body>

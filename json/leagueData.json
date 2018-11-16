@@ -242,801 +242,960 @@
            }],
     "matchdays": [{
         "matchday": "Matchday 1",
-        "matches": [{
-            "matchEnd": true,
-            "result": "3-1",
-            "schedule": {
-                "date": "03-11-2018",
-                "time": "18:00"
-            },
-            "localTeam": {
-                "name": "The Lions Team",
-                "events": {
-                    "goals": [{
-                        "min": 15,
-                        "player": "Scar"
+        "actualMatchday": false,
+        "dates": [{
+            "date": "03-11-2018",
+            "matchesList": [{
+                "matchEnd": true,
+                "result": "3-1",
+                "schedule": {
+                    "date": "03-11-2018",
+                    "time": "18:00"
+                },
+                "localTeam": {
+                    "name": "The Lions Team",
+                    "events": {
+                        "goals": [{
+                            "min": 15,
+                            "player": "Scar",
+                            "parcialResult": "1-0"
                     }, {
-                        "min": 50,
-                        "player": "Simba"
+                            "min": 50,
+                            "player": "Simba",
+                            "parcialResult": "2-1"
                     }, {
-                        "min": 70,
-                        "player": "Ed"
+                            "min": 70,
+                            "player": "Ed",
+                            "parcialResult": "3-1"
                     }],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Capsule Corp",
+                    "events": {
+                        "goals": [{
+                            "min": 22,
+                            "player": "Vegeta",
+                            "parcialResult": "1-1"
+                    }],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+
                 }
-            },
-            "visitingTeam": {
-                "name": "Capsule Corp",
-                "goals": [{
-                    "min": 22,
-                    "player": "Vegeta"
-                    }],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
         }, {
-            "matchEnd": true,
-            "result": "2-0",
-            "schedule": {
-                "date": "03-11-2018",
-                "time": "21:00"
-            },
-            "localTeam": {
-                "name": "FC Quidditch",
-                "events": {
-                    "goals": [{
-                        "min": 40,
-                        "player": "Bellatrix Lestrange"
+                "matchEnd": true,
+                "result": "2-0",
+                "schedule": {
+                    "date": "03-11-2018",
+                    "time": "21:00"
+                },
+                "localTeam": {
+                    "name": "FC Quidditch",
+                    "events": {
+                        "goals": [{
+                            "min": 40,
+                            "player": "Bellatrix Lestrange",
+                            "parcialResult": "1-0"
                     }, {
-                        "min": 85,
-                        "player": "Harry Potter"
+                            "min": 85,
+                            "player": "Harry Potter",
+                            "parcialResult": "2-0"
                     }],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Plumber Crew",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "Plumber Crew",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
+        }]
         }, {
-            "matchEnd": true,
-            "result": "1-2",
-            "schedule": {
-                "date": "04-11-2018",
-                "time": "21:00"
-            },
-            "localTeam": {
-                "name": "Duff FC",
-                "events": {
-                    "goals": [{
-                        "min": 3,
-                        "player": "Barney Gumble"
+            "date": "04-11-2018",
+            "matchesList": [{
+                "matchEnd": true,
+                "result": "1-2",
+                "schedule": {
+                    "date": "04-11-2018",
+                    "time": "21:00"
+                },
+                "localTeam": {
+                    "name": "Duff FC",
+                    "events": {
+                        "goals": [{
+                            "min": 3,
+                            "player": "Barney Gumble",
+                            "parcialResult": "1-0"
                     }],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
-                }
-            },
-            "visitingTeam": {
-                "name": "Marmita Power",
-                "goals": [{
-                    "min": 49,
-                    "player": "Edadepiédrix"
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Marmita Power",
+                    "events": {
+                        "goals": [{
+                            "min": 49,
+                            "player": "Edadepiédrix",
+                            "parcialResult": "1-1"
                     }, {
-                    "min": 60,
-                    "player": "Astérix"
+                            "min": 60,
+                            "player": "Astérix",
+                            "parcialResult": "1-2"
                     }],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                }
+        }]
         }]
     }, {
         "matchday": "Matchday 2",
-        "matches": [{
-            "matchEnd": true,
-            "result": "2-2",
-            "schedule": {
-                "date": "10-11-2018",
-                "time": "18:00"
-            },
-            "localTeam": {
-                "name": "Marmita Power",
-                "events": {
-                    "goals": [{
-                        "min": 18,
-                        "player": "Obélix"
+        "actualMatchday": false,
+        "dates": [{
+            "date": "10-11-2018",
+            "matchesList": [{
+                "matchEnd": true,
+                "result": "2-2",
+                "schedule": {
+                    "date": "10-11-2018",
+                    "time": "18:00"
+                },
+                "localTeam": {
+                    "name": "Marmita Power",
+                    "events": {
+                        "goals": [{
+                            "min": 18,
+                            "player": "Obélix",
+                            "parcialResult": "1-0"
                     }, {
-                        "min": 22,
-                        "player": "Edadepiédrix"
+                            "min": 22,
+                            "player": "Edadepiédrix",
+                            "parcialResult": "2-0"
                     }],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "FC Quidditch",
+                    "events": {
+                        "goals": [{
+                            "min": 50,
+                            "player": "Bellatrix Lestrange",
+                            "parcialResult": "2-1"
+                    }, {
+                            "min": 89,
+                            "player": "Bellatrix Lestrange",
+                            "parcialResult": "2-2"
+                    }],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "FC Quidditch",
-                "goals": [{
-                    "min": 50,
-                    "player": "Bellatrix Lestrange"
-                    }, {
-                    "min": 89,
-                    "player": "Bellatrix Lestrange"
-                    }],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
         }, {
-            "matchEnd": true,
-            "result": "2-0",
-            "schedule": {
-                "date": "10-11-2018",
-                "time": "21:00"
-            },
-            "localTeam": {
-                "name": "Capsule Corp",
-                "events": {
-                    "goals": [{
-                        "min": 12,
-                        "player": "Vegeta"
+                "matchEnd": true,
+                "result": "2-0",
+                "schedule": {
+                    "date": "10-11-2018",
+                    "time": "21:00"
+                },
+                "localTeam": {
+                    "name": "Capsule Corp",
+                    "events": {
+                        "goals": [{
+                            "min": 12,
+                            "player": "Vegeta",
+                            "parcialResult": "1-0"
                     }, {
-                        "min": 37,
-                        "player": "Vegeta"
+                            "min": 37,
+                            "player": "Vegeta",
+                            "parcialResult": "2-0"
                     }],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Duff FC",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "Duff FC",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
+        }]
         }, {
-            "matchEnd": true,
-            "result": "1-3",
-            "schedule": {
-                "date": "11-11-2018",
-                "time": "21:00"
-            },
-            "localTeam": {
-                "name": "Plumber Crew",
-                "events": {
-                    "goals": [{
-                        "min": 85,
-                        "player": "Mario"
+            "date": "11-11-2018",
+            "matchesList": [{
+                "matchEnd": true,
+                "result": "1-3",
+                "schedule": {
+                    "date": "11-11-2018",
+                    "time": "21:00"
+                },
+                "localTeam": {
+                    "name": "Plumber Crew",
+                    "events": {
+                        "goals": [{
+                            "min": 85,
+                            "player": "Mario",
+                            "parcialResult": "1-3"
                     }],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "The Lions Team",
+                    "events": {
+                        "goals": [{
+                            "min": 12,
+                            "player": "Scar",
+                            "parcialResult": "0-1"
+                    }, {
+                            "min": 19,
+                            "player": "Scar",
+                            "parcialResult": "0-2"
+                    }, {
+                            "min": 50,
+                            "player": "Simba",
+                            "parcialResult": "0-3"
+                    }],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "The Lions Team",
-                "goals": [{
-                    "min": 12,
-                    "player": "Scar"
-                    }, {
-                    "min": 19,
-                    "player": "Scar"
-                    }, {
-                    "min": 50,
-                    "player": "Simba"
-                    }],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
+        }]
         }]
     }, {
         "matchday": "Matchday 3",
-        "matches": [{
-            "matchEnd": true,
-            "result": "1-1",
-            "schedule": {
-                "date": "15-11-2018",
-                "time": "16:00"
-            },
-            "localTeam": {
-                "name": "The Lions Team",
-                "events": {
-                    "goals": [{
-                        "min": 87,
-                        "player": "Ed"
+        "actualMatchday": false,
+        "dates": [{
+            "date": "15-11-2018",
+            "matchesList": [{
+                "matchEnd": true,
+                "result": "1-1",
+                "schedule": {
+                    "date": "15-11-2018",
+                    "time": "16:00"
+                },
+                "localTeam": {
+                    "name": "The Lions Team",
+                    "events": {
+                        "goals": [{
+                            "min": 87,
+                            "player": "Ed",
+                            "parcialResult": "1-1"
                     }],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Marmita Power",
+                    "events": {
+                        "goals": [{
+                            "min": 12,
+                            "player": "Astérix",
+                            "parcialResult": "0-1"
+                    }],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "Marmita Power",
-                "goals": [{
-                    "min": 12,
-                    "player": "Astérix"
-                    }],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
         }, {
-            "matchEnd": true,
-            "result": "1-1",
-            "schedule": {
-                "date": "15-11-2018",
-                "time": "18:00"
-            },
-            "localTeam": {
-                "name": "FC Quidditch",
-                "events": {
-                    "goals": [{
-                        "min": 38,
-                        "player": "Harry Potter"
+                "matchEnd": true,
+                "result": "1-1",
+                "schedule": {
+                    "date": "15-11-2018",
+                    "time": "18:00"
+                },
+                "localTeam": {
+                    "name": "FC Quidditch",
+                    "events": {
+                        "goals": [{
+                            "min": 38,
+                            "player": "Harry Potter",
+                            "parcialResult": "1-0"
                     }],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Duff FC",
+                    "events": {
+                        "goals": [{
+                            "min": 56,
+                            "player": "Barney Gumble",
+                            "parcialResult": "1-1"
+                    }],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "Duff FC",
-                "goals": [{
-                    "min": 56,
-                    "player": "Barney Gumble"
-                    }],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
         }, {
-            "matchEnd": true,
-            "result": "0-2",
-            "schedule": {
-                "date": "15-11-2018",
-                "time": "21:00"
-            },
-            "localTeam": {
-                "name": "Plumber Crew",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
-                }
-            },
-            "visitingTeam": {
-                "name": "Capsule Corp",
-                "goals": [{
-                    "min": 20,
-                    "player": "Cor Petit"
+                "matchEnd": true,
+                "result": "0-2",
+                "schedule": {
+                    "date": "15-11-2018",
+                    "time": "21:00"
+                },
+                "localTeam": {
+                    "name": "Plumber Crew",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Capsule Corp",
+                    "events": {
+                        "goals": [{
+                            "min": 20,
+                            "player": "Cor Petit",
+                            "parcialResult": "0-1"
                     }, {
-                    "min": 57,
-                    "player": "Krilin"
+                            "min": 57,
+                            "player": "Krilin",
+                            "parcialResult": "0-1"
                     }],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                }
+        }]
         }]
     }, {
         "matchday": "Matchday 4",
-        "matches": [{
-            "matchEnd": true,
-            "result": "1-0",
-            "schedule": {
-                "date": "19-11-2018",
-                "time": "21:00"
-            },
-            "localTeam": {
-                "name": "Marmita Power",
-                "events": {
-                    "goals": [{
-                        "min": 55,
-                        "player": "Edadepiédrix"
+        "actualMatchday": true,
+        "dates": [{
+            "date": "19-11-2018",
+            "matchesList": [{
+                "matchEnd": true,
+                "result": "1-0",
+                "schedule": {
+                    "date": "19-11-2018",
+                    "time": "18:00"
+                },
+                "localTeam": {
+                    "name": "Marmita Power",
+                    "events": {
+                        "goals": [{
+                            "min": 55,
+                            "player": "Edadepiédrix",
+                            "parcialResult": "1-0"
                     }],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Plumber Crew",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "Plumber Crew",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
         }, {
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "20-11-2018",
-                "time": "18:00"
-            },
-            "localTeam": {
-                "name": "FC Quidditch",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+                "matchEnd": true,
+                "result": "1-1",
+                "schedule": {
+                    "date": "19-11-2018",
+                    "time": "21:00"
+                },
+                "localTeam": {
+                    "name": "Duff FC",
+                    "events": {
+                        "goals": [{
+                            "min": 70,
+                            "player": "Barney Gumble",
+                            "parcialResult": "1-1"
+                    }],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "The Lions Team",
+                    "events": {
+                        "goals": [{
+                            "min": 56,
+                            "player": "Scar",
+                            "parcialResult": "0-1"
+                    }],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "Capsule Corp",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
+        }]
         }, {
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "20-11-2018",
-                "time": "21:00"
-            },
-            "localTeam": {
-                "name": "Duff FC",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+            "date": "20-11-2018",
+            "matchesList": [{
+                "matchEnd": false,
+                "result": null,
+                "schedule": {
+                    "date": "20-11-2018",
+                    "time": "18:00"
+                },
+                "localTeam": {
+                    "name": "FC Quidditch",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Capsule Corp",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "The Lions Team",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
+        }]
         }]
     }, {
         "matchday": "Matchday 5",
-        "matches": [{
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "24-11-2018",
-                "time": "21:00"
-            },
-            "localTeam": {
-                "name": "The Lions Team",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+        "actualMatchday": false,
+        "dates": [{
+            "date": "24-11-2018",
+            "matchesList": [{
+                "matchEnd": false,
+                "result": null,
+                "schedule": {
+                    "date": "24-11-2018",
+                    "time": "21:00"
+                },
+                "localTeam": {
+                    "name": "The Lions Team",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "FC Quidditch",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "FC Quidditch",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
+        }]
         }, {
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "25-11-2018",
-                "time": "18:00"
-            },
-            "localTeam": {
-                "name": "Capsule Corp",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+            "date": "25-11-2018",
+            "matchesList": [{
+                "matchEnd": false,
+                "result": null,
+                "schedule": {
+                    "date": "25-11-2018",
+                    "time": "18:00"
+                },
+                "localTeam": {
+                    "name": "Capsule Corp",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Marmita Power",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "Marmita Power",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
         }, {
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "25-11-2018",
-                "time": "21:00"
-            },
-            "localTeam": {
-                "name": "Plumber Crew",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+                "matchEnd": false,
+                "result": null,
+                "schedule": {
+                    "date": "25-11-2018",
+                    "time": "21:00"
+                },
+                "localTeam": {
+                    "name": "Plumber Crew",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Duff FC",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "Duff FC",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
+        }]
         }]
     }, {
         "matchday": "Matchday 6",
-        "matches": [{
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "01-12-2018",
-                "time": "18:00"
-            },
-            "localTeam": {
-                "name": "Plumber Crew",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+        "actualMatchday": false,
+        "dates": [{
+            "date": "01-12-2018",
+            "matchesList": [{
+                "matchEnd": false,
+                "result": null,
+                "schedule": {
+                    "date": "01-12-2018",
+                    "time": "18:00"
+                },
+                "localTeam": {
+                    "name": "Plumber Crew",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "FC Quidditch",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "FC Quidditch",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
         }, {
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "01-12-2018",
-                "time": "21:00"
-            },
-            "localTeam": {
-                "name": "Marmita Power",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+                "matchEnd": false,
+                "result": null,
+                "schedule": {
+                    "date": "01-12-2018",
+                    "time": "21:00"
+                },
+                "localTeam": {
+                    "name": "Marmita Power",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Duff FC",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "Duff FC",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
+        }]
         }, {
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "02-12-2018",
-                "time": "21:00"
-            },
-            "localTeam": {
-                "name": "Capsule Corp",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+            "date": "02-12-2018",
+            "matchesList": [{
+                "matchEnd": false,
+                "result": null,
+                "schedule": {
+                    "date": "02-12-2018",
+                    "time": "21:00"
+                },
+                "localTeam": {
+                    "name": "Capsule Corp",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "The Lions Team",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "The Lions Team",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
+        }]
         }]
     }, {
         "matchday": "Matchday 7",
-        "matches": [{
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "08-12-2018",
-                "time": "18:00"
-            },
-            "localTeam": {
-                "name": "The Lions Team",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+        "actualMatchday": false,
+        "dates": [{
+            "date": "08-12-2018",
+            "matchesList": [{
+                "matchEnd": false,
+                "result": null,
+                "schedule": {
+                    "date": "08-12-2018",
+                    "time": "18:00"
+                },
+                "localTeam": {
+                    "name": "The Lions Team",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Plumber Crew",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "Plumber Crew",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
         }, {
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "08-12-2018",
-                "time": "21:00"
-            },
-            "localTeam": {
-                "name": "FC Quidditch",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+                "matchEnd": false,
+                "result": null,
+                "schedule": {
+                    "date": "08-12-2018",
+                    "time": "21:00"
+                },
+                "localTeam": {
+                    "name": "FC Quidditch",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Marmita Power",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "Marmita Power",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
+        }]
         }, {
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "09-12-2018",
-                "time": "21:00"
-            },
-            "localTeam": {
-                "name": "Duff FC",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+            "date": "09-12-2018",
+            "matchesList": [{
+                "matchEnd": false,
+                "result": null,
+                "schedule": {
+                    "date": "09-12-2018",
+                    "time": "21:00"
+                },
+                "localTeam": {
+                    "name": "Duff FC",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Capsule Corp",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "Capsule Corp",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
+        }]
         }]
     }, {
         "matchday": "Matchday 8",
-        "matches": [{
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "15-12-2018",
-                "time": "18:00"
-            },
-            "localTeam": {
-                "name": "Marmita Power",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+        "actualMatchday": false,
+        "dates": [{
+            "date": "15-12-2018",
+            "matchesList": [{
+                "matchEnd": false,
+                "result": null,
+                "schedule": {
+                    "date": "15-12-2018",
+                    "time": "18:00"
+                },
+                "localTeam": {
+                    "name": "Marmita Power",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "The Lions Team",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "The Lions Team",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
         }, {
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "15-12-2018",
-                "time": "21:00"
-            },
-            "localTeam": {
-                "name": "Capsule Corp",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+                "matchEnd": false,
+                "result": null,
+                "schedule": {
+                    "date": "15-12-2018",
+                    "time": "21:00"
+                },
+                "localTeam": {
+                    "name": "Capsule Corp",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Plumber Crew",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "Plumber Crew",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
+        }]
         }, {
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "16-12-2018",
-                "time": "21:00"
-            },
-            "localTeam": {
-                "name": "Duff FC",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+            "date": "16-12-2018",
+            "matchesList": [{
+                "matchEnd": false,
+                "result": null,
+                "schedule": {
+                    "date": "16-12-2018",
+                    "time": "21:00"
+                },
+                "localTeam": {
+                    "name": "Duff FC",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "FC Quidditch",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "FC Quidditch",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
+        }]
         }]
     }, {
         "matchday": "Matchday 9",
-        "matches": [{
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "22-12-2018",
-                "time": "16:00"
-            },
-            "localTeam": {
-                "name": "Plumber Crew",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+        "actualMatchday": false,
+        "dates": [{
+            "date": "22-12-2018",
+            "matchesList": [{
+                "matchEnd": false,
+                "result": null,
+                "schedule": {
+                    "date": "22-12-2018",
+                    "time": "16:00"
+                },
+                "localTeam": {
+                    "name": "Plumber Crew",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Marmita Power",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "Marmita Power",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
         }, {
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "22-12-2018",
-                "time": "18:00"
-            },
-            "localTeam": {
-                "name": "Capsule Corp",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+                "matchEnd": false,
+                "result": null,
+                "schedule": {
+                    "date": "22-12-2018",
+                    "time": "18:00"
+                },
+                "localTeam": {
+                    "name": "Capsule Corp",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "FC Quidditch",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "FC Quidditch",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
         }, {
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "22-12-2018",
-                "time": "21:00"
-            },
-            "localTeam": {
-                "name": "The Lions Team",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+                "matchEnd": false,
+                "result": null,
+                "schedule": {
+                    "date": "22-12-2018",
+                    "time": "21:00"
+                },
+                "localTeam": {
+                    "name": "The Lions Team",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Duff FC",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "Duff FC",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
+        }]
         }]
     }, {
         "matchday": "Matchday 10",
-        "matches": [{
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "29-12-2018",
-                "time": "18:00"
-            },
-            "localTeam": {
-                "name": "FC Quidditch",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+        "actualMatchday": false,
+        "dates": [{
+            "date": "29-12-2018",
+            "matchesList": [{
+                "matchEnd": false,
+                "result": null,
+                "schedule": {
+                    "date": "29-12-2018",
+                    "time": "18:00"
+                },
+                "localTeam": {
+                    "name": "FC Quidditch",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "The Lions Team",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "The Lions Team",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
         }, {
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "29-12-2018",
-                "time": "21:00"
-            },
-            "localTeam": {
-                "name": "Duff FC",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+                "matchEnd": false,
+                "result": null,
+                "schedule": {
+                    "date": "29-12-2018",
+                    "time": "21:00"
+                },
+                "localTeam": {
+                    "name": "Duff FC",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Plumber Crew",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "Plumber Crew",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
+        }]
         }, {
-            "matchEnd": false,
-            "result": null,
-            "schedule": {
-                "date": "30-12-2018",
-                "time": "21:00"
-            },
-            "localTeam": {
-                "name": "Marmita Power",
-                "events": {
-                    "goals": [],
-                    "yellowCards": [],
-                    "redCards": [],
-                    "expulsions": []
+            "date": "30-12-2018",
+            "matchesList": [{
+                "matchEnd": false,
+                "result": null,
+                "schedule": {
+                    "date": "30-12-2018",
+                    "time": "21:00"
+                },
+                "localTeam": {
+                    "name": "Marmita Power",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
+                },
+                "visitingTeam": {
+                    "name": "Capsule Corp",
+                    "events": {
+                        "goals": [],
+                        "yellowCards": [],
+                        "redCards": [],
+                        "expulsions": []
+                    }
                 }
-            },
-            "visitingTeam": {
-                "name": "Capsule Corp",
-                "goals": [],
-                "yellowCards": [],
-                "redCards": [],
-                "expulsions": []
-            }
+        }]
         }]
     }]
 }

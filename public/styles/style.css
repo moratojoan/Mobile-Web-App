@@ -285,6 +285,7 @@ select option {
 .boxTeam-list {
     /*box*/
     width: 90%;
+    height: 85px;
     /*    height: 70px;*/
     margin: 3px auto 3px auto;
     background-color: white;
