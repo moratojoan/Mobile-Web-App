@@ -37,12 +37,12 @@ header {
 header h1 {
     /*box*/
     height: 100%;
-    min-width: 77%;
+    min-width: 54%;
     width: 100%;
     margin-bottom: 0;
     /*text*/
     line-height: 60px;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 600;
     text-align: center;
     color: aliceblue;
@@ -51,7 +51,7 @@ header h1 {
 .backDiv {
     /*box*/
     min-width: 18%;
-    margin-left: 5%;
+    margin-left: 4%;
     padding: 8px;
     border: solid 2px black;
     border-radius: 15px;
@@ -67,6 +67,26 @@ header h1 {
     align-items: center;
 }
 
+.logoutButton {
+    /*box*/
+    min-width: 18%;
+    margin-right: 4%;
+    padding: 8px;
+    border: solid 2px black;
+    border-radius: 15px;
+    /*text*/
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+
+    /*Flex*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logoutButton:active,
 .backDiv:active {
     /*box*/
     background-color: #005c14;
@@ -650,11 +670,120 @@ select option {
     margin: 15px;
 }
 
+.W {
+    background: green;
+}
+
+.L {
+    background: red;
+}
+
+.D {
+    background: orange;
+}
+
+.W,
+.L,
+.D {
+    padding: 2px;
+    border-radius: 5px;
+    color: white;
+}
+
 /*End: TeamInfo*/
 
 iframe {
     width: 100%;
 }
+
+/*Start Chat*/
+.inputs {
+    position: fixed;
+    bottom: 50px;
+    width: 100%;
+    margin-top: 5px;
+    /*Flex*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.inputs input {
+    /*Flex*/
+    flex-grow: 1;
+}
+
+.chat {
+    /*box*/
+    width: 100%;
+    min-height: 90vh;
+    padding: 5px;
+    padding-bottom: 10px;
+    background-color: rgba(159, 203, 156, 0.52);
+}
+
+.box {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 70px;
+    padding: 10px;
+
+    overflow: scroll;
+}
+
+.messageDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.messageDiv > div {
+    display: inline-block;
+    background-color: white;
+    padding: 3px 10px 1px 10px;
+    border-radius: 5px;
+    margin-bottom: 3px;
+    box-shadow: 1px 1px 1px grey;
+}
+
+.messageFromUser {
+    align-self: flex-end;
+}
+
+.messageFromOtherUser {
+    align-self: flex-start;
+}
+
+.chatName {
+    font-size: 15px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.chatName,
+.chatMessage {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.chatTime {
+    font-size: 9px;
+    font-style: italic;
+    color: grey;
+    margin-left: 20px;
+}
+
+.chatTime p {
+    /*    width: 100%;*/
+    text-align: right;
+}
+
+/*End Chat*/
 
 /*Start: Media Query*/
 @media (orientation: landscape) {
@@ -812,6 +941,16 @@ iframe {
     .teamInfoLandscape iframe {
         width: 90%;
         margin: auto;
+    }
+
+    .box {
+        margin-bottom: 30px;
+    }
+
+    .inputs {
+        position: fixed;
+        bottom: 0;
+        width: 88%;
     }
 
 }

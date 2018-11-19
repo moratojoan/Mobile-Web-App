@@ -33,6 +33,12 @@
         <div v-show="pageToShow=='index2'">
             <header>
                 <h1>MATCHDAY</h1>
+                <a v-if="!loginDone" v-on:click="login" href="#" class="logoutButton">
+                    <p>Login</p>
+                </a>
+                <a v-else v-on:click="logout" href="#" class="logoutButton">
+                    <p>Logout</p>
+                </a>
             </header>
             <main>
                 <select name="matchdays" v-model="matchdaySelected">
@@ -75,6 +81,12 @@
                     <p>Back</p>
                 </a>
                 <h1>MATCH INFO</h1>
+                <a v-if="!loginDone" v-on:click="login" href="#" class="logoutButton">
+                    <p>Login</p>
+                </a>
+                <a v-else v-on:click="logout" href="#" class="logoutButton">
+                    <p>Logout</p>
+                </a>
             </header>
             <main class="mainContent matchInfoLandscape">
                 <div>
@@ -126,6 +138,12 @@
                     <p>Back</p>
                 </a>
                 <h1>MATCH HISTORY</h1>
+                <a v-if="!loginDone" v-on:click="login" href="#" class="logoutButton">
+                    <p>Login</p>
+                </a>
+                <a v-else v-on:click="logout" href="#" class="logoutButton">
+                    <p>Logout</p>
+                </a>
             </header>
             <main class="mainContent">
                 <ul class="matchHistoryList completeMatchHistoryList">
@@ -149,6 +167,12 @@
         <div v-show="pageToShow=='page-list-teams'">
             <header>
                 <h1>TEAMS</h1>
+                <a v-if="!loginDone" v-on:click="login" href="#" class="logoutButton">
+                    <p>Login</p>
+                </a>
+                <a v-else v-on:click="logout" href="#" class="logoutButton">
+                    <p>Logout</p>
+                </a>
             </header>
             <main class="mainContent">
                 <a v-for="team in teams" v-on:click="showHidePages('teamInfo', team)" href="#" class="boxTeam-list">
@@ -175,16 +199,22 @@
                     <p>Back</p>
                 </a>
                 <h1>{{teamToShow.name}}</h1>
+                <a v-if="!loginDone" v-on:click="login" href="#" class="logoutButton">
+                    <p>Login</p>
+                </a>
+                <a v-else v-on:click="logout" href="#" class="logoutButton">
+                    <p>Logout</p>
+                </a>
             </header>
             <main class="mainContent teamInfoLandscape">
                 <div>
                     <div class="boxTeam-big">
                         <img class="teamLogo-big" v-bind:src="teamToShow.logo.url" v-bind:alt="teamToShow.logo.alt">
                         <div>
-                            <p>Pos: 33</p>
+                            <p>Pos: {{teamToShow.rankingTableInfo.position}}</p>
                             <div>
                                 <p>Last Results:</p>
-                                <p><span>L</span> - <span>D</span> - <span>W</span></p>
+                                <p><span v-for="(result, index) in teamToShow.rankingTableInfo.arrayWDL" v-if="index+1>teamToShow.rankingTableInfo.arrayWDL.length-3"><span v-bind:class="result">{{result}}</span><span v-if="(index+1)!=teamToShow.rankingTableInfo.arrayWDL.length"> - </span></span></p>
                             </div>
                         </div>
                     </div>
@@ -217,6 +247,12 @@
                     <p>Back</p>
                 </a>
                 <h1>TEAM MATCHDAYS</h1>
+                <a v-if="!loginDone" v-on:click="login" href="#" class="logoutButton">
+                    <p>Login</p>
+                </a>
+                <a v-else v-on:click="logout" href="#" class="logoutButton">
+                    <p>Logout</p>
+                </a>
             </header>
             <main class="mainContent">
                 <ul class="teamMatchDateList">
@@ -249,8 +285,14 @@
                     <p>Back</p>
                 </a>
                 <h1>TEAM MEMBERS</h1>
+                <a v-if="!loginDone" v-on:click="login" href="#" class="logoutButton">
+                    <p>Login</p>
+                </a>
+                <a v-else v-on:click="logout" href="#" class="logoutButton">
+                    <p>Logout</p>
+                </a>
             </header>
-            <main class="mainContent secondContent">
+            <main v-if="loginDone" class="mainContent secondContent">
                 <h2>Staff</h2>
                 <ul>
                     <li>Coach: <span>{{teamToShow.members.staff.coach}}</span></li>
@@ -263,6 +305,10 @@
                     <li v-for="fieldPlayer in teamToShow.members.players.fieldPlayers"><span>{{fieldPlayer.dorsal}}</span>- <span>{{fieldPlayer.name}}</span></li>
                 </ul>
             </main>
+            <div v-else>
+                <p>Login to see this page!</p>
+                <button class="button is-info" v-on:click="login">Login!</button>
+            </div>
             <footer>
                 <nav class="navFooter">
                     <a v-on:click="showHidePages('page-list-teams')" href="#"><span>Teams</span><span><i class="fas fa-shield-alt"></i></span></a>
@@ -278,6 +324,12 @@
         <div v-show="pageToShow=='rankings'">
             <header>
                 <h1>RANKINGS</h1>
+                <a v-if="!loginDone" v-on:click="login" href="#" class="logoutButton">
+                    <p>Login</p>
+                </a>
+                <a v-else v-on:click="logout" href="#" class="logoutButton">
+                    <p>Logout</p>
+                </a>
             </header>
             <main>
                 <!-- Nav tabs -->
@@ -309,7 +361,7 @@
                             </thead>
                             <tbody>
                                 <tr v-for="(team, index) in teams">
-                                    <td class="tdPosition">{{index+1}}</td>
+                                    <td class="tdPosition">{{team.rankingTableInfo.position}}</td>
                                     <td class="tdTeamName">{{team.name}}</td>
                                     <td class="tdPoints">
                                         <p>{{team.rankingTableInfo.points}}</p>
@@ -325,7 +377,7 @@
                         </table>
                     </div>
                     <div role="tabpanel" class="mainContent tab-pane fade" id="topScorer">
-                        <table class="rankingTops">
+                        <table v-if="loginDone" class="rankingTops">
                             <thead>
                                 <tr>
                                     <th>Position</th>
@@ -345,9 +397,13 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <div v-else>
+                            <p>Login to see this page!</p>
+                            <button class="button is-info" v-on:click="login">Login!</button>
+                        </div>
                     </div>
                     <div role="tabpanel" class="mainContent tab-pane fade" id="bestGK">
-                        <table class="rankingTops">
+                        <table v-if="loginDone" class="rankingTops">
                             <thead>
                                 <tr>
                                     <th>Position</th>
@@ -367,6 +423,10 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <div v-else>
+                            <p>Login to see this page!</p>
+                            <button class="button is-info" v-on:click="login">Login!</button>
+                        </div>
                     </div>
                 </div>
             </main>
@@ -385,27 +445,44 @@
         <div v-show="pageToShow=='chat'">
             <header>
                 <h1>CHAT</h1>
+                <a v-if="!loginDone" v-on:click="login" href="#" class="logoutButton">
+                    <p>Login</p>
+                </a>
+                <a v-else v-on:click="logout" href="#" class="logoutButton">
+                    <p>Logout</p>
+                </a>
             </header>
-            <main>
+            <main v-if="loginDone">
                 <select name="teams" v-model="chatTeamSelected">
-                    <option value="select">Select a chat...</option>
+                    <option value="GlobalChat">Global Chat</option>
                     <option v-for="(team, index) in teams" v-bind:value="team.name">{{team.name}}</option>
                 </select>
-                <div class="mainContent">
-                    <div class="chat">
-                        <div id="posts" class="box">
-                            Loading posts...
-                        </div>
 
-                        <div class="inputs">
-                            <input id="textInput" class="input" type="text" placeholder="Your message...">
-
-                            <button id="login" class="button is-info" v-on:click="login">Login!</button>
-                            <button id="create-post" class="button is-primary" v-on:click="writeNewPost">Send</button>
-                            <button id="logout" class="button is-info" v-on:click="logout">Logout!</button>
+                <div class="chat">
+                    <div class="box">
+                        <div v-for="message in chatMessages" class="messageDiv">
+                            <div v-if="message.isTheUser" class="messageFromUser">
+                                <div v-if="message.isTheFirstMessage" class="chatName">{{message.userName}}</div>
+                                <div class="chatMessage"><span>{{message.messageText}}</span> <span class="chatTime">{{message.time}}</span></div>
+                            </div>
+                            <div v-else class="messageFromOtherUser">
+                                <div v-if="message.isTheFirstMessage" class="chatName">{{message.userName}}</div>
+                                <div class="chatMessage"><span>{{message.messageText}}</span> <span class="chatTime">{{message.time}}</span></div>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="inputs">
+                        <input class="input" type="text" placeholder="Your message..." v-model="chatTextInput">
+                        <button class="button is-primary" v-on:click="writeNewPost">Send</button>
+                    </div>
                 </div>
+
+
+            </main>
+            <main v-else>
+                <p>Login to see this page!</p>
+                <button class="button is-info" v-on:click="login">Login!</button>
             </main>
             <footer>
                 <nav class="navFooter">

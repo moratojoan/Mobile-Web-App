@@ -12,7 +12,12 @@ var app = new Vue({
         matchdaySelected: null,
         bestGoalkeeper: [],
         topScorer: [],
-        chatTeamSelected: "select"
+        isFirstUpdated: true,
+        //Chat
+        chatTeamSelected: "GlobalChat",
+        loginDone: false,
+        chatTextInput: "",
+        chatMessages: []
     },
     methods: {
         showHidePages: function (id_pageToShow, infoToShow) {
@@ -39,8 +44,6 @@ var app = new Vue({
                     this.matchdays = myData.matchdays;
 
                     this.prepareData();
-
-                    this.getPost();
 
                     this.loading = true;
                 })
@@ -103,7 +106,8 @@ var app = new Vue({
                     draws: 0,
                     losses: 0,
                     goalsInFavour: 0,
-                    goalsAgainst: 0
+                    goalsAgainst: 0,
+                    arrayWDL: []
                 };
                 this.teams[i].rankingTableInfo = obj;
             }
@@ -119,13 +123,16 @@ var app = new Vue({
                                         //win
                                         this.teams[l].rankingTableInfo.wins++;
                                         this.teams[l].rankingTableInfo.points += 3;
+                                        this.teams[l].rankingTableInfo.arrayWDL.push("W");
                                     } else if (resultSign < 0) {
                                         //losse
                                         this.teams[l].rankingTableInfo.losses++;
+                                        this.teams[l].rankingTableInfo.arrayWDL.push("L");
                                     } else {
                                         //draw
                                         this.teams[l].rankingTableInfo.draws++;
                                         this.teams[l].rankingTableInfo.points += 1;
+                                        this.teams[l].rankingTableInfo.arrayWDL.push("D");
                                     }
 
                                     this.teams[l].rankingTableInfo.matchesPlayed++;
@@ -139,14 +146,17 @@ var app = new Vue({
                                     if (resultSign > 0) {
                                         //losse
                                         this.teams[l].rankingTableInfo.losses++;
+                                        this.teams[l].rankingTableInfo.arrayWDL.push("L");
                                     } else if (resultSign < 0) {
                                         //win
                                         this.teams[l].rankingTableInfo.wins++;
                                         this.teams[l].rankingTableInfo.points += 3;
+                                        this.teams[l].rankingTableInfo.arrayWDL.push("W");
                                     } else {
                                         //draw
                                         this.teams[l].rankingTableInfo.draws++;
                                         this.teams[l].rankingTableInfo.points += 1;
+                                        this.teams[l].rankingTableInfo.arrayWDL.push("D");
                                     }
 
                                     this.teams[l].rankingTableInfo.matchesPlayed++;
@@ -177,6 +187,10 @@ var app = new Vue({
                     }
                 }
             });
+            //Save position
+            for (let i = 0; i < this.teams.length; i++) {
+                this.teams[i].rankingTableInfo.position = i + 1;
+            }
 
             //Generate Ranking Best Goalkeeper:
             for (let i = 0; i < this.teams.length; i++) {
@@ -244,7 +258,7 @@ var app = new Vue({
                 }
             }
             //Sort topScorer
-            this.topScorer.sort(function(a,b){
+            this.topScorer.sort(function (a, b) {
                 return b.goals - a.goals;
             })
         },
@@ -264,33 +278,51 @@ var app = new Vue({
             var provider = new firebase.auth.GoogleAuthProvider();
 
             // How to Log In
-            firebase.auth().signInWithPopup(provider);
+            firebase.auth().signInWithPopup(provider).then(() => {
+                this.loginDone = true;
+                setTimeout(() => {
+                    this.getPost();
+                }, 100);
+            });
 
             console.log("login");
         },
         logout: function () {
-            firebase.auth().signOut().then(function () {
+            firebase.auth().signOut().then(() => {
                 // Sign-out successful.
-                console.log("logout")
-            }, function (error) {
+                console.log("logout");
+                this.loginDone = false;
+            }, (error) => {
                 // An error happened.
                 console.log("upss")
             });
+
+        },
+        correctDate: function (number) {
+            var stringNum = ""+number;
+            if (stringNum.length == 1) {
+                return "0" + number;
+            } else {
+                return number;
+            }
         },
         writeNewPost: function () {
             // https://firebase.google.com/docs/database/web/read-and-write
 
             // Values
-            var textInput = document.getElementById("textInput").value;
+            var textInput = this.chatTextInput;
             console.log(textInput);
-
             var userName = firebase.auth().currentUser.displayName;
             console.log(userName);
+            var date = new Date();
+            var time = this.correctDate(date.getHours()) + ":" + this.correctDate(date.getMinutes());
+            console.log(time);
 
             // A post entry.
             var message = {
                 messageText: textInput,
-                name: userName
+                userName: userName,
+                time: time
             };
             console.log(message);
 
@@ -298,24 +330,47 @@ var app = new Vue({
             firebase.database().ref("myChat").push(message);
 
             //Clear textInput
-            document.getElementById("textInput").value = "";
+            this.chatTextInput = "";
 
             //Write data
             console.log("write");
+            this.getPost();
         },
         getPost: function () {
-            firebase.database().ref('myChat').on('value', function (data) {
-                var posts = document.getElementById("posts");
-                posts.innerHTML = "";
+            firebase.database().ref('myChat').on('value', (data) => {
+                this.chatMessages = [];
 
                 var messages = data.val();
 
-                for (var key in messages) {
-                    var text = document.createElement("div");
-                    var element = messages[key];
+                //                for (var key in messages) {
+                //                    var element = messages[key];
+                //                    element.userName = element.userName + " dice:"
+                //                    this.chatMessages.push(element);
+                //                }
 
-                    text.append(element.messageText);
-                    posts.append(text);
+                var lastUserName = null;
+                for (var key in messages) {
+                    var element = messages[key];
+                    var obj = {
+                        userName: element.userName,
+                        messageText: element.messageText,
+                        time: element.time
+                    }
+
+                    if (lastUserName == element.userName) {
+                        obj.isTheFirstMessage = false;
+                    } else {
+                        obj.isTheFirstMessage = true;
+                        lastUserName = element.userName;
+                    }
+
+                    if (element.userName == firebase.auth().currentUser.displayName) {
+                        obj.isTheUser = true;
+                    } else {
+                        obj.isTheUser = false;
+                    }
+
+                    this.chatMessages.push(obj);
                 }
 
             })
@@ -330,6 +385,19 @@ var app = new Vue({
         selectMatchday: function () {
             var day = parseInt(this.matchdaySelected.split(" ")[1]);
             return this.matchdays[day - 1].dates;
+        }
+    },
+    updated: function () {
+        if (this.isFirstUpdated) {
+            this.isFirstUpdated = false;
+            setTimeout(() => {
+                if (firebase.auth().currentUser != null) {
+                    this.loginDone = true;
+                    setTimeout(() => {
+                        this.getPost();
+                    }, 100);
+                }
+            }, 500);
         }
     }
 });
