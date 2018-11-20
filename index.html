@@ -305,7 +305,7 @@
                     <li v-for="fieldPlayer in teamToShow.members.players.fieldPlayers"><span>{{fieldPlayer.dorsal}}</span>- <span>{{fieldPlayer.name}}</span></li>
                 </ul>
             </main>
-            <div v-else>
+            <div v-else class="loginPage">
                 <p>Login to see this page!</p>
                 <button class="button is-info" v-on:click="login">Login!</button>
             </div>
@@ -397,7 +397,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div v-else>
+                        <div v-else class="loginPage">
                             <p>Login to see this page!</p>
                             <button class="button is-info" v-on:click="login">Login!</button>
                         </div>
@@ -423,7 +423,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div v-else>
+                        <div v-else class="loginPage">
                             <p>Login to see this page!</p>
                             <button class="button is-info" v-on:click="login">Login!</button>
                         </div>
@@ -453,19 +453,20 @@
                 </a>
             </header>
             <main v-if="loginDone">
-                <select name="teams" v-model="chatTeamSelected">
+                <select name="teams" v-model="chatTeamSelected" v-on:change="getPost() ; changeBackground()">
                     <option value="GlobalChat">Global Chat</option>
                     <option v-for="(team, index) in teams" v-bind:value="team.name">{{team.name}}</option>
                 </select>
 
                 <div class="chat">
-                    <div class="box">
+                    <div id="scrollBox" class="box">
                         <div v-for="message in chatMessages" class="messageDiv">
-                            <div v-if="message.isTheUser" class="messageFromUser">
+                           <div v-if="message.isTheFirstMessageOfDay" class="chatDate"><div></div><p>{{message.dayMonthYear}}</p><div></div></div>
+                            <div v-if="message.isTheUser" class="messageFromUser messageBox">
                                 <div v-if="message.isTheFirstMessage" class="chatName">{{message.userName}}</div>
                                 <div class="chatMessage"><span>{{message.messageText}}</span> <span class="chatTime">{{message.time}}</span></div>
                             </div>
-                            <div v-else class="messageFromOtherUser">
+                            <div v-else class="messageFromOtherUser messageBox">
                                 <div v-if="message.isTheFirstMessage" class="chatName">{{message.userName}}</div>
                                 <div class="chatMessage"><span>{{message.messageText}}</span> <span class="chatTime">{{message.time}}</span></div>
                             </div>
@@ -480,7 +481,7 @@
 
 
             </main>
-            <main v-else>
+            <main v-else class="loginPage">
                 <p>Login to see this page!</p>
                 <button class="button is-info" v-on:click="login">Login!</button>
             </main>

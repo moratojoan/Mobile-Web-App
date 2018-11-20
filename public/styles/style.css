@@ -701,6 +701,7 @@ iframe {
     position: fixed;
     bottom: 50px;
     width: 100%;
+    height: 35px;
     margin-top: 5px;
     /*Flex*/
     display: flex;
@@ -717,34 +718,40 @@ iframe {
     /*box*/
     width: 100%;
     min-height: 90vh;
-    padding: 5px;
     padding-bottom: 10px;
     background-color: rgba(159, 203, 156, 0.52);
 }
 
 .box {
+/*
+    position: fixed;
+    bottom: 85px;
+*/
     width: 95%;
+/*    height: 90vh;*/
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
     margin-bottom: 70px;
     padding: 10px;
 
-    overflow: scroll;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 
 .messageDiv {
+    width:100%;
     display: flex;
     flex-direction: column;
 }
 
-.messageDiv > div {
+.messageBox {
     display: inline-block;
     background-color: white;
     padding: 3px 10px 1px 10px;
     border-radius: 5px;
     margin-bottom: 3px;
     box-shadow: 1px 1px 1px grey;
+    max-width: 100%;
 }
 
 .messageFromUser {
@@ -771,6 +778,10 @@ iframe {
     align-items: flex-end;
 }
 
+.chatMessage {
+    word-break: break-all;
+}
+
 .chatTime {
     font-size: 9px;
     font-style: italic;
@@ -783,7 +794,40 @@ iframe {
     text-align: right;
 }
 
+.chatDate{
+    text-align: center;
+    font-size: 13px;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.chatDate p{
+    width: 25%;
+}
+.chatDate div{
+    width: 35%;
+    height: 1px;
+    background-color: black;
+}
 /*End Chat*/
+
+.loginPage{
+    height: 80vh;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginPage button{
+    margin-top: 30px;
+}
 
 /*Start: Media Query*/
 @media (orientation: landscape) {

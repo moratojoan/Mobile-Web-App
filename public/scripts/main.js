@@ -299,7 +299,7 @@ var app = new Vue({
 
         },
         correctDate: function (number) {
-            var stringNum = ""+number;
+            var stringNum = "" + number;
             if (stringNum.length == 1) {
                 return "0" + number;
             } else {
@@ -310,58 +310,54 @@ var app = new Vue({
             // https://firebase.google.com/docs/database/web/read-and-write
 
             // Values
-            var textInput = this.chatTextInput;
+            var textInput = this.chatTextInput.trim();
             console.log(textInput);
-            var userName = firebase.auth().currentUser.displayName;
-            console.log(userName);
-            var date = new Date();
-            var time = this.correctDate(date.getHours()) + ":" + this.correctDate(date.getMinutes());
-            console.log(time);
+            if (textInput != "") {
+                var userName = firebase.auth().currentUser.displayName;
+                console.log(userName);
+                var date = new Date();
+                var time = this.correctDate(date.getHours()) + ":" + this.correctDate(date.getMinutes());
+                console.log(time);
+                var dayMonthYear = this.correctDate(date.getDate()) + "-" + this.correctDate(date.getMonth() + 1) + "-" +
+                    date.getFullYear();
+                console.log(date.getFullYear());
 
-            // A post entry.
-            var message = {
-                messageText: textInput,
-                userName: userName,
-                time: time
-            };
-            console.log(message);
+                // A post entry.
+                var message = {
+                    messageText: textInput,
+                    userName: userName,
+                    time: time,
+                    dayMonthYear: dayMonthYear
+                };
+                console.log(message);
 
-            // Get a key for a new Post.
-            firebase.database().ref("myChat").push(message);
+//                this.scrollToBottom();
+                // Get a key for a new Post.
+                //            firebase.database().ref("myChat").push(message);
+                firebase.database().ref(this.chatTeamSelected).push(message);
 
-            //Clear textInput
-            this.chatTextInput = "";
+                //Clear textInput
+                this.chatTextInput = "";
 
-            //Write data
-            console.log("write");
-            this.getPost();
+                //Write data
+                console.log("write");
+            }
         },
         getPost: function () {
-            firebase.database().ref('myChat').on('value', (data) => {
+            firebase.database().ref(this.chatTeamSelected).on('value', (data) => {
                 this.chatMessages = [];
 
                 var messages = data.val();
 
-                //                for (var key in messages) {
-                //                    var element = messages[key];
-                //                    element.userName = element.userName + " dice:"
-                //                    this.chatMessages.push(element);
-                //                }
-
                 var lastUserName = null;
+                var lastDay = null;
                 for (var key in messages) {
                     var element = messages[key];
                     var obj = {
                         userName: element.userName,
                         messageText: element.messageText,
-                        time: element.time
-                    }
-
-                    if (lastUserName == element.userName) {
-                        obj.isTheFirstMessage = false;
-                    } else {
-                        obj.isTheFirstMessage = true;
-                        lastUserName = element.userName;
+                        time: element.time,
+                        dayMonthYear: element.dayMonthYear
                     }
 
                     if (element.userName == firebase.auth().currentUser.displayName) {
@@ -370,16 +366,53 @@ var app = new Vue({
                         obj.isTheUser = false;
                     }
 
+                    if (lastDay == element.dayMonthYear) {
+                        obj.isTheFirstMessageOfDay = false;
+                    } else {
+                        obj.isTheFirstMessageOfDay = true;
+                        lastDay = element.dayMonthYear;
+                    }
+
+                    if (lastUserName == element.userName && !obj.isTheFirstMessageOfDay) {
+                        obj.isTheFirstMessage = false;
+                    } else {
+                        obj.isTheFirstMessage = true;
+                        lastUserName = element.userName;
+                    }
+
                     this.chatMessages.push(obj);
                 }
 
             })
 
             console.log("getting posts");
+        },
+        changeBackground: function () {
+            switch (this.chatTeamSelected) {
+                case "GlobalChat":
+                    document.getElementsByClassName("chat")[0].style.background = "rgba(159, 203, 156, 0.52) url('../images/logo.png') no-repeat center";
+                    document.getElementsByClassName("chat")[0].style.backgroundSize = "100% auto";
+                    document.getElementsByClassName("chat")[0].style.backgroundAttachment = "fixed";
+                    break;
+                default:
+                    for (var i = 0; i < this.teams.length; i++) {
+                        if (this.teams[i].name == this.chatTeamSelected) {
+                            break;
+                        }
+                    }
+                    //linear-gradient(rgba(255,255,255,.5),rgba(255,255,255,.5))
+                    document.getElementsByClassName("chat")[0].style.background = "rgba(159, 203, 156, 0.52) url(" + this.teams[i].logo.url + ") no-repeat center";
+                    document.getElementsByClassName("chat")[0].style.backgroundSize = "100% auto";
+                    document.getElementsByClassName("chat")[0].style.backgroundAttachment = "fixed";
+                    break;
+            }
         }
     },
     created: function () {
         this.startFetch(this.url);
+        document.getElementsByClassName("chat")[0].style.background = "rgba(159, 203, 156, 0.52) url('../images/logo.png') no-repeat center";
+        document.getElementsByClassName("chat")[0].style.backgroundSize = "100% auto";
+        document.getElementsByClassName("chat")[0].style.backgroundAttachment = "fixed";
     },
     computed: {
         selectMatchday: function () {
