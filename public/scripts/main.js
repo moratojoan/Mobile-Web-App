@@ -12,7 +12,6 @@ var app = new Vue({
         matchdaySelected: null,
         bestGoalkeeper: [],
         topScorer: [],
-        isFirstUpdated: true,
         //Chat
         chatTeamSelected: "GlobalChat",
         loginDone: false,
@@ -26,11 +25,26 @@ var app = new Vue({
                     this.teamToShow = infoToShow;
                 } else if (id_pageToShow == "matchInfo") {
                     this.matchToShow = infoToShow;
-                    this.goalsSorted = this.sortGoals(infoToShow.localTeam.events.goals, infoToShow.visitingTeam.events.goals)
+                    this.goalsSorted = this.sortMatchGoals(infoToShow.localTeam.events.goals, infoToShow.visitingTeam.events.goals)
                 }
             }
 
+            //Nav Bar
+            var navA = document.getElementsByClassName("navA");
+            for (let i = 0; i < navA.length; i++) {
+                navA[i].classList.remove("aActive");
+            }
+            if ((id_pageToShow == "page-list-teams") || (id_pageToShow == "index2") || (id_pageToShow == "rankings") || (id_pageToShow == "chat")) {
+                document.getElementById(id_pageToShow).classList.add("aActive");
+            }
+
             this.pageToShow = id_pageToShow;
+
+            if (id_pageToShow == "chat") {
+                setTimeout(() => {
+                    this.scrollDown();
+                }, 100);
+            }
         },
         startFetch: function (url) {
             fetch(url, {
@@ -49,6 +63,8 @@ var app = new Vue({
                 })
         },
         prepareData: function () {
+            console.time("data")
+
             //Plain teamToShow, matchToShow and matchdaySelected to avoid errors the first time.
             for (let i = 0; i < this.matchdays.length; i++) {
                 if (this.matchdays[i].actualMatchday) {
@@ -58,47 +74,12 @@ var app = new Vue({
             this.teamToShow = this.teams[0];
             this.matchToShow = this.matchdays[0].dates[0].matchesList[0];
 
-            //Fill the match objects with the team info needed && //Fill the teams objects with their schedule and result
+            //Add the necessary keys to the teams object: schedule and rankingTableInfo:
             for (let i = 0; i < this.teams.length; i++) {
+                //Add schedule key in teams
                 this.teams[i].schedule = [];
-            }
-            for (let i = 0; i < this.matchdays.length; i++) {
-                for (let j = 0; j < this.matchdays[i].dates.length; j++) {
-                    for (let k = 0; k < this.matchdays[i].dates[j].matchesList.length; k++) {
-                        for (let l = 0; l < this.teams.length; l++) {
-                            if (this.teams[l].name == this.matchdays[i].dates[j].matchesList[k].localTeam.name) {
-                                //Fill the match objects with the team info needed
-                                this.matchdays[i].dates[j].matchesList[k].localTeam.logo = this.teams[l].logo;
-                                this.matchdays[i].dates[j].matchesList[k].localTeam.stadium = this.teams[l].stadium;
 
-                                //Fill the teams objects with their schedule and result
-                                var obj = {
-                                    localTeam: this.matchdays[i].dates[j].matchesList[k].localTeam.name,
-                                    visitingTeam: this.matchdays[i].dates[j].matchesList[k].visitingTeam.name,
-                                    schedule: this.matchdays[i].dates[j].matchesList[k].schedule,
-                                    result: this.matchdays[i].dates[j].matchesList[k].result
-                                }
-                                this.teams[l].schedule.push(obj);
-                            } else if (this.teams[l].name == this.matchdays[i].dates[j].matchesList[k].visitingTeam.name) {
-                                //Fill the match objects with the team info needed
-                                this.matchdays[i].dates[j].matchesList[k].visitingTeam.logo = this.teams[l].logo;
-
-                                //Fill the teams objects with their schedule and result
-                                var obj = {
-                                    localTeam: this.matchdays[i].dates[j].matchesList[k].localTeam.name,
-                                    visitingTeam: this.matchdays[i].dates[j].matchesList[k].visitingTeam.name,
-                                    schedule: this.matchdays[i].dates[j].matchesList[k].schedule,
-                                    result: this.matchdays[i].dates[j].matchesList[k].result
-                                }
-                                this.teams[l].schedule.push(obj);
-                            }
-                        }
-                    }
-                }
-            }
-
-            //Generate Ranking Tables:
-            for (let i = 0; i < this.teams.length; i++) {
+                //Add rankingTableInfo key with a empty object to each team:
                 var obj = {
                     points: 0,
                     matchesPlayed: 0,
@@ -111,13 +92,29 @@ var app = new Vue({
                 };
                 this.teams[i].rankingTableInfo = obj;
             }
-            for (let i = 0; i < this.matchdays.length; i++) {
-                for (let j = 0; j < this.matchdays[i].dates.length; j++) {
-                    for (let k = 0; k < this.matchdays[i].dates[j].matchesList.length; k++) {
-                        if (this.matchdays[i].dates[j].matchesList[k].matchEnd) {
-                            for (let l = 0; l < this.teams.length; l++) {
-                                if (this.teams[l].name == this.matchdays[i].dates[j].matchesList[k].localTeam.name) {
-                                    //Local Team
+
+            //Fill Obj teams and Obj matchdays with necessary info to show in the web-app:
+            for (let i = 0; i < this.matchdays.length; i++) { //1.1- loop into each matchday in the matchdays array
+                for (let j = 0; j < this.matchdays[i].dates.length; j++) { //1.2- loop into each date in each matchday
+                    for (let k = 0; k < this.matchdays[i].dates[j].matchesList.length; k++) { //1.3- loop into each match in each date
+                        for (let l = 0; l < this.teams.length; l++) { //2.1- loop into each team in the teams array
+                            if (this.teams[l].name == this.matchdays[i].dates[j].matchesList[k].localTeam.name) { //LocalT
+                                //A.L- Fill matches with the logo of the two teams and the stadium info of local team:
+                                //Fill the match objects with the team info needed
+                                this.matchdays[i].dates[j].matchesList[k].localTeam.logo = this.teams[l].logo;
+                                this.matchdays[i].dates[j].matchesList[k].localTeam.stadium = this.teams[l].stadium;
+
+                                //Fill the teams objects with their schedule and result
+                                var obj = {
+                                    localTeam: this.matchdays[i].dates[j].matchesList[k].localTeam.name,
+                                    visitingTeam: this.matchdays[i].dates[j].matchesList[k].visitingTeam.name,
+                                    schedule: this.matchdays[i].dates[j].matchesList[k].schedule,
+                                    result: this.matchdays[i].dates[j].matchesList[k].result
+                                }
+                                this.teams[l].schedule.push(obj);
+                                //A.L- End
+                                //B.L- Calculate the Ranking League Table 
+                                if (this.matchdays[i].dates[j].matchesList[k].matchEnd) {
                                     var resultSign = this.matchdays[i].dates[j].matchesList[k].localTeam.events.goals.length - this.matchdays[i].dates[j].matchesList[k].visitingTeam.events.goals.length;
                                     if (resultSign > 0) {
                                         //win
@@ -140,8 +137,24 @@ var app = new Vue({
                                     this.teams[l].rankingTableInfo.goalsInFavour += this.matchdays[i].dates[j].matchesList[k].localTeam.events.goals.length;
 
                                     this.teams[l].rankingTableInfo.goalsAgainst += this.matchdays[i].dates[j].matchesList[k].visitingTeam.events.goals.length;
-                                } else if (this.teams[l].name == this.matchdays[i].dates[j].matchesList[k].visitingTeam.name) {
-                                    //Visiting Team
+                                }
+                                //B.L- End
+                            } else if (this.teams[l].name == this.matchdays[i].dates[j].matchesList[k].visitingTeam.name) { //VisitingT
+                                //A.V- Fill matches with the logo of the two teams and the stadium info of local team:
+                                //Fill the match objects with the team info needed
+                                this.matchdays[i].dates[j].matchesList[k].visitingTeam.logo = this.teams[l].logo;
+
+                                //Fill the teams objects with their schedule and result
+                                var obj = {
+                                    localTeam: this.matchdays[i].dates[j].matchesList[k].localTeam.name,
+                                    visitingTeam: this.matchdays[i].dates[j].matchesList[k].visitingTeam.name,
+                                    schedule: this.matchdays[i].dates[j].matchesList[k].schedule,
+                                    result: this.matchdays[i].dates[j].matchesList[k].result
+                                }
+                                this.teams[l].schedule.push(obj);
+                                //A.V-End
+                                //B.V- Calculate the Ranking League Table 
+                                if (this.matchdays[i].dates[j].matchesList[k].matchEnd) {
                                     var resultSign = this.matchdays[i].dates[j].matchesList[k].localTeam.events.goals.length - this.matchdays[i].dates[j].matchesList[k].visitingTeam.events.goals.length;
                                     if (resultSign > 0) {
                                         //losse
@@ -165,54 +178,15 @@ var app = new Vue({
 
                                     this.teams[l].rankingTableInfo.goalsAgainst += this.matchdays[i].dates[j].matchesList[k].localTeam.events.goals.length;
                                 }
+                                //B.V- End
                             }
-                        }
-                    }
-                }
-            }
-            //Sort Teams by Points
-            this.teams.sort(function (a, b) {
-                if (a.rankingTableInfo.points - b.rankingTableInfo.points > 0) {
-                    return -1;
-                } else if (a.rankingTableInfo.points - b.rankingTableInfo.points < 0) {
-                    return 1;
-                } else {
-                    //if there is a draw, compere the goals difference
-                    if ((a.rankingTableInfo.goalsInFavour - a.rankingTableInfo.goalsAgainst) - (b.rankingTableInfo.goalsInFavour - b.rankingTableInfo.goalsAgainst) > 0) {
-                        return -1;
-                    } else if ((a.rankingTableInfo.goalsInFavour - a.rankingTableInfo.goalsAgainst) - (b.rankingTableInfo.goalsInFavour - b.rankingTableInfo.goalsAgainst) < 0) {
-                        return 1;
-                    } else {
-                        return 0;
-                    }
-                }
-            });
-            //Save position
-            for (let i = 0; i < this.teams.length; i++) {
-                this.teams[i].rankingTableInfo.position = i + 1;
-            }
+                        } //2.1- End
 
-            //Generate Ranking Best Goalkeeper:
-            for (let i = 0; i < this.teams.length; i++) {
-                var obj = {
-                    playerName: this.teams[i].members.players.goalkeeper[0].name,
-                    teamName: this.teams[i].name,
-                    goalsAgainst: this.teams[i].rankingTableInfo.goalsAgainst
-                }
-                this.bestGoalkeeper.push(obj);
-            }
-            //Sort beastGoalkeeper
-            this.bestGoalkeeper.sort(function (a, b) {
-                return a.goalsAgainst - b.goalsAgainst;
-            });
-
-            //Generate Ranking Top Scorer:
-            for (let i = 0; i < this.matchdays.length; i++) {
-                for (let j = 0; j < this.matchdays[i].dates.length; j++) {
-                    for (let k = 0; k < this.matchdays[i].dates[j].matchesList.length; k++) {
+                        //C- Generate Ranking Top Scorer:
                         if (this.matchdays[i].dates[j].matchesList[k].matchEnd) {
+                            //loop in each goal of localTeams
                             for (let l = 0; l < this.matchdays[i].dates[j].matchesList[k].localTeam.events.goals.length; l++) {
-                                //comprovar si el jugador ya esta añadido a la lista o no
+                                //Check if the player is already added
                                 var playerAdded = false;
                                 for (let m = 0; m < this.topScorer.length; m++) {
                                     if (this.topScorer[m].name == this.matchdays[i].dates[j].matchesList[k].localTeam.events.goals[l].player) {
@@ -232,8 +206,9 @@ var app = new Vue({
                                     this.topScorer.push(obj);
                                 }
                             }
+                            //loop in each goal of visitingTeams
                             for (let l = 0; l < this.matchdays[i].dates[j].matchesList[k].visitingTeam.events.goals.length; l++) {
-                                //comprovar si el jugador ya esta añadido a la lista o no
+                                //Check if the player is already added
                                 var playerAdded = false;
                                 for (let m = 0; m < this.topScorer.length; m++) {
                                     if (this.topScorer[m].name == this.matchdays[i].dates[j].matchesList[k].visitingTeam.events.goals[l].player) {
@@ -253,16 +228,59 @@ var app = new Vue({
                                     this.topScorer.push(obj);
                                 }
                             }
-                        }
-                    }
-                }
-            }
-            //Sort topScorer
+                        } //C- End
+                    } //1.3- End
+                } //1.2- End
+            } //1.1- End
+
+            //C- Sort topScorer
             this.topScorer.sort(function (a, b) {
                 return b.goals - a.goals;
             })
+
+            //D- Sort Teams by Points
+            this.teams.sort(function (a, b) {
+                if (a.rankingTableInfo.points - b.rankingTableInfo.points > 0) {
+                    return -1;
+                } else if (a.rankingTableInfo.points - b.rankingTableInfo.points < 0) {
+                    return 1;
+                } else {
+                    //if there is a draw, compere the goals difference
+                    if ((a.rankingTableInfo.goalsInFavour - a.rankingTableInfo.goalsAgainst) - (b.rankingTableInfo.goalsInFavour - b.rankingTableInfo.goalsAgainst) > 0) {
+                        return -1;
+                    } else if ((a.rankingTableInfo.goalsInFavour - a.rankingTableInfo.goalsAgainst) - (b.rankingTableInfo.goalsInFavour - b.rankingTableInfo.goalsAgainst) < 0) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                }
+            });
+
+            //D- Save Teams League Table Position
+            for (let i = 0; i < this.teams.length; i++) {
+                this.teams[i].rankingTableInfo.position = i + 1;
+            }
+
+            //E- Generate Ranking Best Goalkeeper:
+            for (let i = 0; i < this.teams.length; i++) {
+                var obj = {
+                    playerName: this.teams[i].members.players.goalkeeper[0].name,
+                    teamName: this.teams[i].name,
+                    goalsAgainst: this.teams[i].rankingTableInfo.goalsAgainst
+                }
+                this.bestGoalkeeper.push(obj);
+            }
+
+            //E- Sort beastGoalkeeper
+            this.bestGoalkeeper.sort(function (a, b) {
+                return a.goalsAgainst - b.goalsAgainst;
+            });
+
+            console.timeEnd("data")
+            //Before Refactor: data: 6.492919921875ms
+            //After Refactor: data: 3.8798828125ms
         },
-        sortGoals: function (localGoals, visitingGoals) {
+        sortMatchGoals: function (localGoals, visitingGoals) {
             var allGoals = [...localGoals, ...visitingGoals];
             allGoals.sort(function (a, b) {
                 return b.min - a.min;
@@ -331,9 +349,8 @@ var app = new Vue({
                 };
                 console.log(message);
 
-//                this.scrollToBottom();
                 // Get a key for a new Post.
-                //            firebase.database().ref("myChat").push(message);
+                //firebase.database().ref("myChat").push(message);
                 firebase.database().ref(this.chatTeamSelected).push(message);
 
                 //Clear textInput
@@ -341,7 +358,12 @@ var app = new Vue({
 
                 //Write data
                 console.log("write");
+
+                setTimeout(() => {
+                    this.scrollDown();
+                }, 100);
             }
+
         },
         getPost: function () {
             firebase.database().ref(this.chatTeamSelected).on('value', (data) => {
@@ -406,6 +428,22 @@ var app = new Vue({
                     document.getElementsByClassName("chat")[0].style.backgroundAttachment = "fixed";
                     break;
             }
+            setTimeout(() => {
+                this.scrollDown();
+            }, 1000);
+        },
+        scrollDown: function () {
+            document.getElementsByClassName("box")[0].scrollTop = document.getElementsByClassName("box")[0].scrollHeight;
+            console.log("Scroll");
+        }
+    },
+    computed: {
+        selectMatchday: function () {
+            for (let i = 0; i < this.matchdays.length; i++) {
+                if (this.matchdays[i].matchday == this.matchdaySelected) {
+                    return this.matchdays[i].dates;
+                }
+            }
         }
     },
     created: function () {
@@ -413,24 +451,13 @@ var app = new Vue({
         document.getElementsByClassName("chat")[0].style.background = "rgba(159, 203, 156, 0.52) url('../images/logo.png') no-repeat center";
         document.getElementsByClassName("chat")[0].style.backgroundSize = "100% auto";
         document.getElementsByClassName("chat")[0].style.backgroundAttachment = "fixed";
-    },
-    computed: {
-        selectMatchday: function () {
-            var day = parseInt(this.matchdaySelected.split(" ")[1]);
-            return this.matchdays[day - 1].dates;
-        }
-    },
-    updated: function () {
-        if (this.isFirstUpdated) {
-            this.isFirstUpdated = false;
-            setTimeout(() => {
-                if (firebase.auth().currentUser != null) {
-                    this.loginDone = true;
-                    setTimeout(() => {
-                        this.getPost();
-                    }, 100);
-                }
-            }, 500);
-        }
+        setTimeout(() => {
+            if (firebase.auth().currentUser != null) {
+                this.loginDone = true;
+                setTimeout(() => {
+                    this.getPost();
+                }, 100);
+            }
+        }, 1000);
     }
 });

@@ -24,7 +24,8 @@ header {
     /*box*/
     position: sticky;
     top: 0;
-    height: 60px;
+    /*    height: 60px;*/
+    height: 10vh;
     width: 100%;
     background-color: #009621;
 
@@ -41,7 +42,8 @@ header h1 {
     width: 100%;
     margin-bottom: 0;
     /*text*/
-    line-height: 60px;
+    /*    line-height: 60px;*/
+    line-height: 10vh;
     font-size: 20px;
     font-weight: 600;
     text-align: center;
@@ -89,10 +91,16 @@ header h1 {
 .logoutButton:active,
 .backDiv:active {
     /*box*/
-    background-color: #005c14;
+    background-color: #00430f;
     /*text*/
     text-decoration: none;
-    color: white;
+    color: black;
+}
+
+.logoutButton:hover,
+.backDiv:hover {
+    text-decoration: none;
+    color: black;
 }
 
 /*End: Header*/
@@ -107,7 +115,8 @@ footer {
 
 .navFooter {
     /*box*/
-    min-height: 50px;
+    /*    min-height: 50px;*/
+    min-height: 8vh;
     width: 100%;
     background-color: #009621;
 
@@ -121,12 +130,13 @@ footer {
 
 .navFooter a {
     /*box*/
-    min-width: 20%;
+    min-width: 22%;
     height: 100%;
     border: solid 1px black;
     /*text*/
     font-size: 13px;
-    line-height: 50px;
+    /*    line-height: 50px;*/
+    line-height: 8vh;
     text-align: center;
     color: white;
 
@@ -141,15 +151,10 @@ footer {
     text-decoration: none;
 }
 
-.navFooter a:visited {
-    /*text*/
-    color: white;
-}
-
 .navFooter a:active,
 .navFooter .aActive {
     /*box*/
-    min-width: 25%;
+    min-width: 24%;
     background-color: #006a17;
     /*text*/
     font-size: 18px;
@@ -172,9 +177,11 @@ footer {
 select {
     /*box*/
     position: sticky;
-    top: 60px;
+    /*    top: 60px;*/
+    top: 10vh;
     width: 100%;
-    height: 40px;
+    /*    height: 40px;*/
+    height: 6vh;
     background-color: #d6d6d6;
     /*text*/
     font-size: 15px;
@@ -190,9 +197,11 @@ select option {
 
 .mainContent {
     /*box*/
-    min-height: 90vh;
-    padding-top: 15px;
-    margin-bottom: 70px;
+    /*    min-height: 90vh;*/
+    /*    padding-top: 15px;*/
+    padding-top: 2vh;
+    /*    margin-bottom: 70px;*/
+    margin-bottom: 10vh;
 
     /*Flex*/
     display: flex;
@@ -355,11 +364,13 @@ select option {
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
     /*box*/
-    height: 50px;
+    /*    height: 50px;*/
+    height: 8vh;
     background-color: #006a17;
     border: solid 1px black;
     /*text*/
-    line-height: 50px;
+    /*    line-height: 50px;*/
+    line-height: 8vh;
     font-size: 17px;
     font-weight: 500;
     color: white;
@@ -367,13 +378,15 @@ select option {
 
 .nav-tabs .nav-link {
     /*box*/
-    height: 50px;
+    /*    height: 50px;*/
+    height: 8vh;
     border-top-left-radius: .25rem;
     border-top-right-radius: .25rem;
     border: solid 1px black;
     /*text*/
-    line-height: 50px;
-    font-size: 13px;
+/*    line-height: 50px;*/
+    line-height: 8vh;
+    font-size: 14px;
     text-align: center;
     color: white;
 }
@@ -385,8 +398,10 @@ select option {
 .rankingsTabs {
     /*box*/
     position: sticky;
-    top: 60px;
-    min-height: 50px;
+    /*    top: 60px;*/
+    top: 10vh;
+    /*    min-height: 50px;*/
+    min-height: 8vh;
     background-color: #009621;
 
     /*Flex*/
@@ -699,9 +714,11 @@ iframe {
 /*Start Chat*/
 .inputs {
     position: fixed;
-    bottom: 50px;
+    /*    bottom: 50px;*/
+    bottom: 8vh;
     width: 100%;
-    height: 35px;
+    /*    height: 35px;*/
+    height: 5vh;
     margin-top: 5px;
     /*Flex*/
     display: flex;
@@ -717,29 +734,33 @@ iframe {
 .chat {
     /*box*/
     width: 100%;
-    min-height: 90vh;
-    padding-bottom: 10px;
+    /*    min-height: 90vh;*/
+    height: 71vh;
+    /*    padding-bottom: 10px;*/
     background-color: rgba(159, 203, 156, 0.52);
+    display: flex;
 }
 
 .box {
-/*
+    /*
     position: fixed;
     bottom: 85px;
 */
     width: 95%;
-/*    height: 90vh;*/
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 70px;
-    padding: 10px;
+    /*    height: 90vh;*/
+    height: 68vh;
+    /*    margin-left: auto;*/
+    /*    margin-right: auto;*/
+    margin: auto;
+    /*    margin-bottom: 70px;*/
+    /*    padding: 10px;*/
 
-    overflow-y: scroll;
+    overflow: scroll;
     scroll-behavior: smooth;
 }
 
 .messageDiv {
-    width:100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -794,38 +815,41 @@ iframe {
     text-align: right;
 }
 
-.chatDate{
+.chatDate {
     text-align: center;
     font-size: 13px;
     font-style: italic;
     font-weight: bold;
     margin-top: 10px;
     margin-bottom: 10px;
-    
+
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.chatDate p{
+
+.chatDate p {
     width: 25%;
 }
-.chatDate div{
+
+.chatDate div {
     width: 35%;
     height: 1px;
     background-color: black;
 }
+
 /*End Chat*/
 
-.loginPage{
+.loginPage {
     height: 80vh;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.loginPage button{
+.loginPage button {
     margin-top: 30px;
 }
 
@@ -841,6 +865,22 @@ iframe {
     header,
     main {
         width: 88%;
+    }
+
+    header {
+        /*    height: 60px;*/
+        height: 15vh;
+    }
+
+    header h1 {
+        /*text*/
+        /*    line-height: 60px;*/
+        line-height: 15vh;
+    }
+
+    select {
+        height: 8vh;
+
     }
 
     footer {
