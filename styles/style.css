@@ -1027,14 +1027,19 @@ iframe {
         margin: auto;
     }
 
-    .box {
-        margin-bottom: 30px;
-    }
-
     .inputs {
         position: fixed;
         bottom: 0;
         width: 88%;
+        height: 10vh;
+    }
+    
+    .chat{
+        height: 67vh
+    }
+    
+    .box{
+        height: 62vh;
     }
 
 }
